@@ -1,0 +1,34 @@
+<div class="login_content">
+  <form [formGroup]="loginForm" (submit)="submitLogin()">
+    <div class="login_title">
+      <h1>Login</h1>
+      <h5>Example: "eve.holt@reqres.in" "cityslicka"</h5>
+    </div>
+    <div class="login_box-input">
+      <div>
+        <input placeholder="Email" formControlName="email" class="login_input">
+      </div>
+      <div>
+        <div *ngIf="email?.errors?.['required'] && email?.touched" class="required_label">
+          El campo de email es obligatorio
+        </div>
+        <div *ngIf="email?.errors?.['email'] && email?.touched" class="required_label" >
+          El formato del email es incorrecto
+        </div>
+      </div>
+    </div>
+    <div class="login_box-input">
+      <div >
+        <input type="password" placeholder="Contraseña" formControlName="password" class="login_input">
+      </div>
+      <div>
+        <div *ngIf="password?.errors?.['required'] && password?.touched" class="required_label">
+          El campo de contraseña es obligatorio
+        </div>
+      </div>
+    </div>
+    <div >
+      <button type="submit" [disabled]="!loginForm.valid" class="submit_button">submit</button>
+    </div>
+  </form>
+</div>

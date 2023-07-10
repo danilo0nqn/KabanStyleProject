@@ -1,0 +1,40 @@
+.login_content{
+  display: grid;
+}
+
+.login_title{
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.login_box-input{
+  grid-template-columns: max-content 1fr;
+  align-items: center;
+  column-gap: 0.75rem;
+  margin-bottom: 20px;
+}
+
+.login_input{
+  width: 100%;
+  padding-block: 0.8rem;
+  background: none;
+  color: white;
+  position: relative;
+  z-index: 1;
+  border: none;
+  border-bottom: 2px solid white;
+}
+
+.ng-star-inserted{
+  color: wheat;
+  border: none;
+  text-shadow: 2px 5px 5px black;
+}
+
+
+
+.submit_button{
+  display: flex;
+  justify-self: center;
+  justify-content: center;
+}
