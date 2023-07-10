@@ -7,12 +7,12 @@
   <mat-sidenav-container class="example-sidenav-container"
                          [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
-                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
-      <mat-nav-list>
+                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" class="sidebar">
+      <mat-nav-list class="sidebar_list">
         <a mat-list-item [routerLink]="['login']" >Login</a>
         <a mat-list-item [routerLink]="['home']" >Home</a>
         <a mat-list-item [routerLink]="['doom']" >Doom</a>
-        <a mat-list-item routerLink="." >Link 4</a>
+        <button mat-list-item (click)="logout()" class="button_sidebar" >Logout</button>
       </mat-nav-list>
     </mat-sidenav>
 

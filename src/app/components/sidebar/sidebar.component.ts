@@ -23,5 +23,8 @@ export class SidebarComponent implements OnDestroy{
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
+  logout(){
+    sessionStorage.removeItem('token')
+  }
   
 }
