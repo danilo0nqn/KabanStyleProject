@@ -8,13 +8,6 @@
   right: 0;
 }
 
-.example-is-mobile .toolbar {
-  position: fixed;
-  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
-  z-index: 2;
-  
-}
-
 h1.example-app-name {
   display: flex;
   margin: auto;
@@ -24,14 +17,8 @@ h1.example-app-name {
 .sidenav-container {
   /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
      causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
-  flex: 1;
-}
-
-.example-is-mobile .sidenav-container {
-  /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
-     `<body>` to be our scrolling element for mobile layouts. */
   flex: 1 0 auto;
-  
+  margin-top: 0;
 }
 
 .sidebar{
@@ -46,13 +33,4 @@ h1.example-app-name {
 
 .button_sidebar{
   border: none;
-}
-
-.mat-mdc-form-field + .mat-mdc-form-field {
-  margin-left: 8px;
-}
-
-
-.sidenav_content {
-  margin-top: 56px;
 }

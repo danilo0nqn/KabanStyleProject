@@ -14,6 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material/material/material.module';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
+import { ProjectsSidebarComponent } from './components/projects-sidebar/projects-sidebar.component';
+import { ProjectsExpansionPanelComponent } from './components/projects-expansion-panel/projects-expansion-panel.component';
 
 
 
@@ -25,7 +27,9 @@ import { LoginFormComponent } from './components/login-form/login-form.component
     DoomPageComponent,
     NavbarComponent,
     SidebarComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    ProjectsSidebarComponent,
+    ProjectsExpansionPanelComponent,
   ],
   imports: [
     BrowserModule,

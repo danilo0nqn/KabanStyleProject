@@ -30,6 +30,7 @@ export class LoginPageComponent implements OnInit{
       (response) => {
         console.log(response);
         sessionStorage.setItem('token', response.token);
+        this.authService.setToken(response.token);
         this.router.navigate(['home'])
       },
       (error) => console.error(`Ha habido un error al intentar loguearse ${error}`),

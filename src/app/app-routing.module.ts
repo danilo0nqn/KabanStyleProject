@@ -5,17 +5,19 @@ import { NavbarComponent } from './pages/navbar/navbar.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { authGuard } from './guards/authguard/auth.guard';
 import { DoomPageComponent } from './pages/doom-page/doom-page.component';
+import { loguedGuard } from './guards/logued.guard';
 
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'navbar'
+    redirectTo: 'login'
   },
   {
     path: 'login',
-    component: LoginPageComponent
+    component: LoginPageComponent,
+    canActivate: [loguedGuard]
   },
   {
     path: 'home',

@@ -1,23 +1,36 @@
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches" >
-  <mat-toolbar  class="example-toolbar">
-    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+  <mat-toolbar  class="toolbar">
+    <button mat-icon-button (click)="snav.toggle()" [disabled]="!canActivate" ><mat-icon>menu</mat-icon></button>
     <h1 class="example-app-name">Kanban Styled Task Cards!</h1>
   </mat-toolbar>
 
-  <mat-sidenav-container class="example-sidenav-container"
-                         [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+  <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
-                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" class="sidebar">
+                [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" class="sidebar" (closedStart)="closeProjectsSidebar()" 
+                role="navigation" >
       <mat-nav-list class="sidebar_list">
-        <a mat-list-item [routerLink]="['login']" >Login</a>
+        <ng-container *ngIf="!token;else logout">
+          <a mat-list-item [routerLink]="['login']" >Login</a>
+        </ng-container>
+        <ng-template #logout >
+          <button mat-list-item (click)="desloguearse()" class="button_sidebar" (click)="this.sidenav.close()">Logout</button>
+        </ng-template>
         <a mat-list-item [routerLink]="['home']" >Home</a>
+        <div>
+          <button mat-list-item (click)="projectsSidebar()" class="button_sidebar" *ngIf="!mobileQuery.matches">Projects</button>
+          <app-projects-expansion-panel *ngIf="mobileQuery.matches"></app-projects-expansion-panel>
+        </div>
         <a mat-list-item [routerLink]="['doom']" >Doom</a>
-        <button mat-list-item (click)="logout()" class="button_sidebar" >Logout</button>
       </mat-nav-list>
     </mat-sidenav>
 
-    <mat-sidenav-content>
-      <router-outlet></router-outlet>
+    <mat-sidenav-content >
+      <div *ngIf="showProjectsSidebar;else noProjectOpened" >
+        <app-projects-sidebar ></app-projects-sidebar>
+      </div>
+      <ng-template #noProjectOpened>
+        <router-outlet></router-outlet>
+      </ng-template>   
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

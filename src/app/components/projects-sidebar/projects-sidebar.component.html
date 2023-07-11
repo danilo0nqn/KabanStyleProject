@@ -1,0 +1,15 @@
+<div class="example-container"  >
+  <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="0" >
+    <mat-sidenav #snav [mode]="'side'" fixedTopGap="56" class="sidebar" opened="true" class="sidebar" >
+        <mat-nav-list class="sidebar_list">
+        <a mat-list-item [routerLink]="['home']" >Home</a>
+        <a mat-list-item [routerLink]="['doom']" >Doom</a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+</div>

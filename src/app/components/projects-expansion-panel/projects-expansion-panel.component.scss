@@ -1,0 +1,26 @@
+.mat-mdc-form-field + .mat-mdc-form-field {
+  margin-left: 8px;
+}
+
+.mat-expansion-panel {
+  border: none;
+}
+
+.mat-expansion-panel-header{
+  display: flex;
+  flex-direction: row;
+  padding-right: 16px;
+}
+
+.mat-expansion-panel-header-title{
+  text-align: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.mat-mdc-list-item-line{
+  text-decoration: none;
+}
+
