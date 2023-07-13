@@ -1,4 +1,4 @@
-<div class="home-content" *ngIf="userData; else loading">
+<div class="home-content" >
   <div class="profile-urgent-projects">
     <div class="profile-content">
       <div class="profile-pic">
@@ -7,25 +7,35 @@
         </div>
       </div>
       <div class="profile-welcome">
-        <h1>Bienvenido/a {{ userData.first_name }}!</h1>
+        <h1>Welcome {{ userData.first_name }}!</h1>
+        <h3>You have 6 tasks to do (2 urgents!)</h3>
       </div>
       <div class="profile-info">
         <div class="profile-info-content">
-          <h2>informacion</h2>
-          <h4>iconos IG TW LI</h4>
-        </div>
-        <div class="profile-info-button-container">
-          <button class="profile-info-button" (click)="getAvatar()">
-            Editar
-          </button>
+          <h2>{{userData.first_name}} {{userData.last_name}} </h2>
+          <h2>Email: {{userData.email}}</h2>
+          <div class="profile-info-social">
+            <a href="" target="_blank">
+              <img src="../../../assets/img/Linkedin.svg" >
+            </a>
+            <a href="" target="_blank" >
+              <img src="../../../assets/img/GitHub.svg">
+            </a>
+          </div>
         </div>
       </div>
       <div class="profile-message">
         <div class="profile-message-summary">
-          estado publico - si estas de vacaciones
+          <h2 [attr.contenteditable]="canChangePersonalStatus ? 'true' : 'false'" [class.profile-message-summary-editable]="canChangePersonalStatus"
+                                      #userPersonalStatusElement>
+            {{userPersonalStatus}}
+          </h2>
         </div>
-        <div>
-          <button class="profile-message-button">editar</button>
+        <div *ngIf="!canChangePersonalStatus">
+          <button class="profile-message-button" (click)="changePersonalStatus()">edit</button>
+        </div>
+        <div *ngIf="canChangePersonalStatus">
+          <button class="profile-message-button" (click)="saveChangePersonalStatus()">Save</button>
         </div>
       </div>
     </div>
@@ -33,15 +43,14 @@
       <div class="urgent-project-graphic">
         <div class="urgent-project">
           <div class="urgent-name-project">
-            <h1>projectos urgentes</h1>
+            <h1>Urgent Task</h1>
           </div>
           <hr class="urgent-project-divider">
           <div class="urgent-project-projects">
             <div>
-              <h3>tarea 2 de projecto 1</h3>
+              <h3>Task 2 (urgent) of project 1</h3>
             </div>
             <div>
-              <h3>tarea 3 de projecto 2</h3>
             </div>
           </div>
         </div>
@@ -52,15 +61,14 @@
       <div class="urgent-project-graphic">
         <div class="urgent-project">
           <div class="urgent-name-project">
-            <h1>projectos urgentes</h1>
+            <h1>Urgent Task</h1>
           </div>
           <hr class="urgent-project-divider">
           <div class="urgent-project-projects">
             <div>
-              <h3>tarea 2 de projecto 1</h3>
             </div>
             <div>
-              <h3>tarea 3 de projecto 2</h3>
+              <h3>Task 3 (urgent) of project 1</h3>
             </div>
           </div>
         </div>
@@ -71,21 +79,66 @@
     </div>
   </div>
   <div class="projects-content">
-    projectos
-    <div>
-      projecto 1
-      <div>tarea 1</div>
-      <div>tarea 2</div>
-      <div>tarea 3</div>
+    <h1 class="projects-content-title">projects and task!</h1>
+    <div class="projects-content-project">
+      <div class="projects-content-project-title">
+        <h1>project 1</h1>
+      </div>
+      <hr class="projects-content-divider">
+      <div class="projects-content-project-task">
+        <div class="projects-content-project-task-title">
+          Task 1
+        </div>
+        <div class="projects-content-project-task-description">
+          Description task 1
+        </div>
+      </div>
+      <div class="projects-content-project-task">
+        <div class="projects-content-project-task-title">
+          Task 2
+        </div>
+        <div class="projects-content-project-task-description">
+          Description task 2
+        </div>
+      </div>
+      <div class="projects-content-project-task">
+        <div class="projects-content-project-task-title">
+          Task 3
+        </div>
+        <div class="projects-content-project-task-description">
+          Description task 3
+        </div>
+      </div>
     </div>
-    <div>
-      projecto 2
-      <div>tarea 1</div>
-      <div>tarea 2</div>
-      <div>tarea 3</div>
+    <div class="projects-content-project">
+      <div class="projects-content-project-title">
+        <h1>project 2</h1>
+      </div>
+      <hr class="projects-content-divider">
+      <div class="projects-content-project-task">
+        <div class="projects-content-project-task-title">
+          Task 1
+        </div>
+        <div class="projects-content-project-task-description">
+          Description task 1
+        </div>
+      </div>
+      <div class="projects-content-project-task">
+        <div class="projects-content-project-task-title">
+          Task 2
+        </div>
+        <div class="projects-content-project-task-description">
+          Description task 2
+        </div>
+      </div>
+      <div class="projects-content-project-task">
+        <div class="projects-content-project-task-title">
+          Task 2
+        </div>
+        <div class="projects-content-project-task-description">
+          Description task 2
+        </div>
+      </div>
     </div>
   </div>
 </div>
-<ng-template #loading>
-  <mat-spinner></mat-spinner>
-</ng-template>

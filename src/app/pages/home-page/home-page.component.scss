@@ -81,20 +81,12 @@
       margin-right: auto;
     }
 
-    .profile-info-button {
-      background-color: transparent;
-      color: #03bfbc;
-      border: 1px solid #03bfbc;
-      border-radius: 3px;
-      cursor: pointer;
-      padding: 10px 25px;
+    .profile-info-social{
+      display: flex;
+      justify-content: flex-start;
+      gap: 35px
     }
 
-    .profile-info-button:hover {
-      background-color: #03bfbc;
-      color: #231e39;
-      transition: 0.5s;
-    }
   }
 
   .profile-message {
@@ -108,6 +100,11 @@
 
     .profile-message-summary {
       align-self: center;
+      color: rgb(245, 164, 140);
+    }
+    .profile-message-summary-editable{
+      background-color: aliceblue;
+      border-radius: 6px;
     }
 
     .profile-message-button {
@@ -136,7 +133,7 @@
 
   .urgent-project-graphic {
     border-radius: 30px;
-    border: 1px solid #03bfbc;
+    border: 1px solid #bf2903;
     background: #555555;
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
     color: white;
@@ -152,7 +149,7 @@
       }
 
       .urgent-project-divider{
-        border: 1px solid #03bfbc;
+        border: 1px solid #bf2903;
         border-radius: 5px;
       }
 
@@ -162,6 +159,7 @@
 
     .urgent-project-graphic {
       background: transparent;
+      border: 1px solid #03bfbc;
     }
   }
 }
@@ -171,6 +169,51 @@
   flex-direction: column;
   overflow: auto;
   flex-grow: 1;
+
+  .projects-content-title{
+    text-align: center;
+    font-size: 32px;
+  }
+
+  .projects-content-project{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 30px;
+    border: 1px solid #03bfbc;
+    background: #555555;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+    color: white;
+    padding: 10px;
+    margin: 20px;
+
+    .projects-content-project-title{
+      align-self: center;
+    }
+
+    .projects-content-divider{
+      border: 1px solid #03bfbc;
+      border-radius: 5px;
+      width: 85%;
+    }
+
+    .projects-content-project-task{
+      display: flex;
+      align-items:baseline;
+
+      .projects-content-project-task-title{
+        font-size: larger;
+        margin: 10px;
+        margin-right: 25px;
+      }
+
+      .projects-content-project-task-description{
+
+      }
+    }
+  }
+  
+  
 }
 
 @media (max-width: 1100px) {
@@ -195,7 +238,17 @@
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 750px) {
+    .home-content{
+    background: rgb(56, 57, 133);
+    background: linear-gradient(
+    90deg,
+    rgb(56, 57, 133) 0%,
+    rgba(46, 85, 145, 1) 50%,
+    rgb(56, 57, 133) 100%
+  );
+  }
+
   .profile-urgent-projects {
     flex-direction: column;
     align-items: center;
