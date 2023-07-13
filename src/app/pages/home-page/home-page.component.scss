@@ -1,23 +1,33 @@
 .home-content {
   display: flex;
   flex-direction: column;
+  background: #555555;
+  background: linear-gradient(
+    90deg,
+    #555555 0%,
+    rgba(46, 85, 145, 1) 64%,
+    rgb(56, 57, 133) 100%
+  );
+  min-height: 100%;
 }
 
 .profile-urgent-projects {
   display: flex;
-  border: 5px solid goldenrod;
+}
+
+.profile-urgent-projects * {
+  font-family: Montserrat, sans-serif;
 }
 
 .profile-content {
   display: grid;
   justify-items: start;
-  grid-template-columns: 200px auto;
+  grid-template-columns: 300px auto;
   grid-template-rows: 300px 150px 150px;
   justify-items: space-between;
   align-items: center;
-  border: 5px solid green;
   width: 1200px;
-  background-color: #292343;
+  background-color: transparent;
 
   .profile-pic {
     grid-column: 1 / 2;
@@ -28,7 +38,8 @@
     border: 3px solid #03bfbc;
     display: flex;
     justify-content: center;
-    margin-left: 20px;
+    justify-self: end;
+    margin: 20px;
 
     .profile-pic-img-container {
       display: flex;
@@ -51,22 +62,26 @@
     height: 50px;
     grid-column: 2 / 3;
     grid-row: 1 / 2;
+    margin: 20px;
   }
 
   .profile-info {
     grid-column: 1 / 3;
     grid-row: 2/3;
     display: flex;
-    justify-content: space-between;
-    width: 100%;
-    height: 100%;
+    justify-content: space-around;
+    align-items: space-around;
+    height: 94%;
+    width: 94%;
+    margin: 6%;
 
     .profile-info-content {
       align-self: center;
+      display: block;
+      margin-right: auto;
     }
 
     .profile-info-button {
-      margin-left: auto;
       background-color: transparent;
       color: #03bfbc;
       border: 1px solid #03bfbc;
@@ -86,22 +101,24 @@
     grid-column: 1 / 3;
     grid-row: 3/4;
     display: flex;
-    width: 100%;
-    height: 100%;
-    padding-top: 30px;
+    width: 94%;
+    height: 94%;
+    margin: 6%;
+    justify-content: space-between;
 
     .profile-message-summary {
       align-self: center;
-      margin-right: auto;
     }
 
     .profile-message-button {
+      display: block;
       background-color: transparent;
       color: #03bfbc;
       border: 1px solid #03bfbc;
       border-radius: 3px;
       cursor: pointer;
       padding: 10px 25px;
+      margin-left: auto;
     }
 
     .profile-message-button:hover {
@@ -115,14 +132,67 @@
 .urgent-projects {
   display: flex;
   flex-direction: column;
-  border: 5px solid red;
   width: 100%;
+
+  .urgent-project-graphic {
+    border-radius: 30px;
+    border: 1px solid #03bfbc;
+    background: #555555;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    margin: 20px;
+
+    .urgent-project {
+      
+
+      .urgent-name-project {
+      }
+
+      .urgent-project-divider{
+        border: 1px solid #03bfbc;
+        border-radius: 5px;
+      }
+
+      .urgent-project-projects {
+      }
+    }
+
+    .urgent-project-graphic {
+      background: transparent;
+    }
+  }
 }
 
 .projects-content {
   display: flex;
   flex-direction: column;
-  border: 5px solid lightblue;
+  overflow: auto;
+  flex-grow: 1;
+}
+
+@media (max-width: 1100px) {
+  .profile-urgent-projects {
+    display: flex;
+  }
+
+  .profile-content {
+    width: 100%;
+    row-gap: 35px;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+  }
+  .profile-pic {
+    height: 300px;
+    width: 300px;
+    display: flex;
+  }
+  .urgent-projects {
+    flex-grow: 3;
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -130,12 +200,5 @@
     flex-direction: column;
     align-items: center;
     justify-items: center;
-  }
-
-  .profile-content {
-    width: 100%;
-    row-gap: 35px;
-    display: flex;
-    flex-direction: column;
   }
 }

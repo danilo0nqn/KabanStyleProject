@@ -12,13 +12,11 @@
   position: fixed;
   /* Make sure the toolbar will stay on top of the content as it scrolls past. */
   z-index: 2;
-  
 }
 
 h1.example-app-name {
   display: flex;
   margin: auto;
-  
 }
 
 .sidenav-container {
@@ -31,20 +29,23 @@ h1.example-app-name {
   /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
      `<body>` to be our scrolling element for mobile layouts. */
   flex: 1 0 auto;
-  
 }
 
-.sidebar{
+.menu-button {
+  color: rgb(78, 78, 78);
+}
+
+.sidebar {
   width: 200px;
 }
 
-.sidebar_list{
+.sidebar_list {
   display: flex;
   flex-direction: column;
   text-align: center;
 }
 
-.button_sidebar{
+.button_sidebar {
   border: none;
   display: flex;
 }
@@ -53,11 +54,10 @@ h1.example-app-name {
   margin-left: 8px;
 }
 
-
 .sidenav_content {
   margin-top: 56px;
 }
 
-.material_icon_arrow{
+.material_icon_arrow {
   font-size: 12px;
 }

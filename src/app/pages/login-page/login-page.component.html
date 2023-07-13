@@ -1,6 +1,6 @@
 <div class="login_page">
   <img src="../../../assets/img/login-img.jpg" class="login_img">
-  <app-login-form (loginAction)="loginUser($event)" class="login_form" ></app-login-form>
+  <app-login-form (loginAction)="loginUser($event)" class="login_form" [errorInLogin]="errorLogin" ></app-login-form>
 </div>
 
 

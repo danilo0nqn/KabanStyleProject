@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, Form } from '@angular/forms'
 
 @Component({
@@ -6,12 +6,17 @@ import { FormGroup, FormBuilder, Validators, Form } from '@angular/forms'
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss']
 })
-export class LoginFormComponent implements OnInit{
+export class LoginFormComponent implements OnInit, OnChanges{
 
   loginForm! : FormGroup
+  @Input() errorInLogin = ''
   @Output() loginAction: EventEmitter<{}> = new EventEmitter<{}>();
 
   constructor (private formBuilder: FormBuilder){}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    
+  }
 
   ngOnInit(): void {
     

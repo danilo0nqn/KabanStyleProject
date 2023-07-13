@@ -10,6 +10,9 @@ import { RandomProfileService } from 'src/app/services/random-profile.service';
   styleUrls: ['./login-page.component.scss'],
 })
 export class LoginPageComponent implements OnInit {
+
+  errorLogin: string = ''
+
   constructor(
     private router: Router,
     private authService: AuthService,
@@ -33,26 +36,26 @@ export class LoginPageComponent implements OnInit {
         console.log(response);
         sessionStorage.setItem('token', response.token);
         this.authService.setToken(response.token);
+        this.errorLogin = '';
 
         /* TODO: Cambiar a cargar valores reales */
         /* Realizar llamado con un id verdadero, o email verdadero haciendo un query filtrado */
 
-        this.profileLoader.getRandomContact(7).subscribe(
+        this.profileLoader.getRandomContact(3).subscribe(
           (responseProfile) => {
             console.log(responseProfile);
             this.randomProfile.setUserData(responseProfile);
           },
-          (error) =>
-            console.error(
-              `Ha habido un error al intentar cargar el contacto falso de reqres ${error}`
-            ),
+          (error) =>console.error(`Ha habido un error al intentar cargar el contacto falso de reqres ${error}`),
           () => console.info('proceso de cargado de contacto falso de reqres')
         );
-
+        
         this.router.navigate(['home']);
       },
-      (error) =>
-        console.error(`Ha habido un error al intentar loguearse ${error}`),
+      (error) => {
+        this.errorLogin = 'User Not Found.'
+        console.error(`Ha habido un error al intentar loguearse ${error}`)
+      },
       () => console.info('proceso de login finalizado')
     );
   }

@@ -1,9 +1,9 @@
-<ng-container class="home-content" *ngIf="userData; else loading">
+<div class="home-content" *ngIf="userData; else loading">
   <div class="profile-urgent-projects">
     <div class="profile-content">
       <div class="profile-pic">
         <div class="profile-pic-img-container">
-          <img class="profile-pic-img" [src]="userData.avatar" alt="" />
+          <img class="profile-pic-img" [src]="userData.avatar" alt="../../../assets/img/genericAvatar.webp" />
         </div>
       </div>
       <div class="profile-welcome">
@@ -14,7 +14,7 @@
           <h2>informacion</h2>
           <h4>iconos IG TW LI</h4>
         </div>
-        <div>
+        <div class="profile-info-button-container">
           <button class="profile-info-button" (click)="getAvatar()">
             Editar
           </button>
@@ -30,9 +30,44 @@
       </div>
     </div>
     <div class="urgent-projects">
-      projectos urgentes
-      <div>tarea 2 de projecto 1</div>
-      <div>tarea 3 de projecto 2</div>
+      <div class="urgent-project-graphic">
+        <div class="urgent-project">
+          <div class="urgent-name-project">
+            <h1>projectos urgentes</h1>
+          </div>
+          <hr class="urgent-project-divider">
+          <div class="urgent-project-projects">
+            <div>
+              <h3>tarea 2 de projecto 1</h3>
+            </div>
+            <div>
+              <h3>tarea 3 de projecto 2</h3>
+            </div>
+          </div>
+        </div>
+        <div class="urgent-project-graphic">
+          grafico
+        </div>
+      </div>
+      <div class="urgent-project-graphic">
+        <div class="urgent-project">
+          <div class="urgent-name-project">
+            <h1>projectos urgentes</h1>
+          </div>
+          <hr class="urgent-project-divider">
+          <div class="urgent-project-projects">
+            <div>
+              <h3>tarea 2 de projecto 1</h3>
+            </div>
+            <div>
+              <h3>tarea 3 de projecto 2</h3>
+            </div>
+          </div>
+        </div>
+        <div class="urgent-project-graphic">
+          grafico
+        </div>
+      </div>
     </div>
   </div>
   <div class="projects-content">
@@ -50,7 +85,7 @@
       <div>tarea 3</div>
     </div>
   </div>
-</ng-container>
+</div>
 <ng-template #loading>
   <mat-spinner></mat-spinner>
 </ng-template>

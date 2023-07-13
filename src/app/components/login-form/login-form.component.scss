@@ -1,20 +1,20 @@
-.login_content{
+.login_content {
   display: grid;
 }
 
-.login_title{
+.login_title {
   text-align: center;
   margin-bottom: 15px;
   margin-top: 20px;
 }
 
-.login_box-input{
+.login_box-input {
   grid-template-columns: max-content 1fr;
   align-items: center;
   column-gap: 0.75rem;
 }
 
-.login_input{
+.login_input {
   width: 100%;
   padding-block: 0.8rem;
   background: none;
@@ -26,15 +26,17 @@
   margin-bottom: 20px;
 }
 
-.ng-star-inserted{
+.login_input::placeholder {
+  color: rgb(192, 191, 191);
+}
+
+.ng-star-inserted {
   color: wheat;
   border: none;
   text-shadow: 2px 5px 5px black;
 }
 
-
-
-.submit_button{
+.submit_button {
   display: flex;
   justify-self: center;
   justify-content: center;
@@ -43,4 +45,10 @@
   margin-bottom: 20px;
   margin-top: 20px;
   height: 35px;
+}
+
+.user-not-found{
+  color: rgb(79, 166, 216);
+  text-shadow: 1px 2px 0.5px black;
+  text-align: center;
 }
