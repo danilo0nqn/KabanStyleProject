@@ -46,6 +46,7 @@ h1.example-app-name {
 
 .button_sidebar{
   border: none;
+  display: flex;
 }
 
 .mat-mdc-form-field + .mat-mdc-form-field {
@@ -55,4 +56,8 @@ h1.example-app-name {
 
 .sidenav_content {
   margin-top: 56px;
+}
+
+.material_icon_arrow{
+  font-size: 12px;
 }

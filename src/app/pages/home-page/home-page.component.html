@@ -1,1 +1,60 @@
-<p>home-page works!</p>
+<ng-container class="home-content" *ngIf="userData; else loading">
+  <div class="profile-urgent-projects">
+    <div class="profile-content">
+      <div class="profile-pic">
+        <div class="profile-pic-img-container">
+          <img
+            class="profile-pic-img"
+            src="https://reqres.in/img/faces/2-image.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="profile-welcome">
+        <h1>Bienvenido/a {{ userData.first_name }}!</h1>
+      </div>
+      <div class="profile-info">
+        <div class="profile-info-content">
+          <h2>informacion</h2>
+          <h4>iconos IG TW LI</h4>
+        </div>
+        <div>
+          <button class="profile-info-button" (click)="getAvatar()">
+            Editar
+          </button>
+        </div>
+      </div>
+      <div class="profile-message">
+        <div class="profile-message-summary">
+          estado publico - si estas de vacaciones
+        </div>
+        <div>
+          <button class="profile-message-button">editar</button>
+        </div>
+      </div>
+    </div>
+    <div class="urgent-projects">
+      projectos urgentes
+      <div>tarea 2 de projecto 1</div>
+      <div>tarea 3 de projecto 2</div>
+    </div>
+  </div>
+  <div class="projects-content">
+    projectos
+    <div>
+      projecto 1
+      <div>tarea 1</div>
+      <div>tarea 2</div>
+      <div>tarea 3</div>
+    </div>
+    <div>
+      projecto 2
+      <div>tarea 1</div>
+      <div>tarea 2</div>
+      <div>tarea 3</div>
+    </div>
+  </div>
+</ng-container>
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>

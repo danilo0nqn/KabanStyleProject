@@ -16,6 +16,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { ProjectsSidebarComponent } from './components/projects-sidebar/projects-sidebar.component';
 import { ProjectsExpansionPanelComponent } from './components/projects-expansion-panel/projects-expansion-panel.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 
 
@@ -30,6 +31,7 @@ import { ProjectsExpansionPanelComponent } from './components/projects-expansion
     LoginFormComponent,
     ProjectsSidebarComponent,
     ProjectsExpansionPanelComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,

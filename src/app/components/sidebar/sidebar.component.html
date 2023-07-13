@@ -17,7 +17,11 @@
         </ng-template>
         <a mat-list-item [routerLink]="['home']" >Home</a>
         <div>
-          <button mat-list-item (click)="projectsSidebar()" class="button_sidebar" *ngIf="!mobileQuery.matches">Projects</button>
+          <button mat-list-item (click)="projectsSidebar()" class="button_sidebar" *ngIf="!mobileQuery.matches">
+            Projects
+            <span class="material-icons material_icon_arrow" *ngIf="!showProjectsSidebar">arrow_forward_ios</span>
+            <span class="material-icons material_icon_arrow" *ngIf="showProjectsSidebar">arrow_back_ios</span>
+          </button>
           <app-projects-expansion-panel *ngIf="mobileQuery.matches"></app-projects-expansion-panel>
         </div>
         <a mat-list-item [routerLink]="['doom']" >Doom</a>
