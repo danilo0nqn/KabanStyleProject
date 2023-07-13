@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { IRandomContact } from 'src/app/models/randomuser.interface';
+import {
+  IRandomContact,
+  SingleResult,
+} from 'src/app/models/randomuser.interface';
 import { RandomProfileService } from 'src/app/services/random-profile.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -9,11 +13,17 @@ import { RandomProfileService } from 'src/app/services/random-profile.service';
 })
 export class HomePageComponent implements OnInit {
   userData!: IRandomContact;
-  constructor(private randomProfile: RandomProfileService) {}
+  constructor(
+    private randomProfile: RandomProfileService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.userData = this.randomProfile.getUserData();
     console.log(sessionStorage.getItem('userData'));
+    this.route.data.subscribe((data) => {
+      const randomContact: SingleResult = data['randomContact'];
+    });
   }
 
   getAvatar() {

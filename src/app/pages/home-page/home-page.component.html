@@ -1,13 +1,9 @@
-<ng-container class="home-content">
+<ng-container class="home-content" *ngIf="userData; else loading">
   <div class="profile-urgent-projects">
     <div class="profile-content">
       <div class="profile-pic">
         <div class="profile-pic-img-container">
-          <img
-            class="profile-pic-img"
-            src="https://reqres.in/img/faces/2-image.jpg"
-            alt=""
-          />
+          <img class="profile-pic-img" [src]="userData.avatar" alt="" />
         </div>
       </div>
       <div class="profile-welcome">

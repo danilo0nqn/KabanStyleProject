@@ -7,9 +7,18 @@ import { Results, SingleResult } from '../models/randomuser.interface';
   providedIn: 'root',
 })
 export class ProfileLoaderService {
+  private observableReturned!: Observable<SingleResult>;
+
   constructor(private http: HttpClient) {}
 
   getRandomContact(id: number): Observable<SingleResult> {
-    return this.http.get<SingleResult>(`https://reqres.in/api/users/${id}`);
+    this.observableReturned = this.http.get<SingleResult>(
+      `https://reqres.in/api/users/${id}`
+    );
+    return this.observableReturned;
+  }
+
+  getObservable(): Observable<SingleResult> {
+    return this.observableReturned;
   }
 }

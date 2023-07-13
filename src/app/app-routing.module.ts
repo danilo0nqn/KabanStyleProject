@@ -6,33 +6,36 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { authGuard } from './guards/authguard/auth.guard';
 import { DoomPageComponent } from './pages/doom-page/doom-page.component';
 import { loguedGuard } from './guards/logued.guard';
-
+import { LoadingResolverService } from './services/loading-resolver.service';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'login'
+    redirectTo: 'login',
   },
   {
     path: 'login',
     component: LoginPageComponent,
-    canActivate: [loguedGuard]
+    canActivate: [loguedGuard],
   },
   {
     path: 'home',
     component: HomePageComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
+    resolve: {
+      randomContact: LoadingResolverService,
+    },
   },
   {
     path: 'doom',
     component: DoomPageComponent,
-    canActivate: [authGuard]
-  }
+    canActivate: [authGuard],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

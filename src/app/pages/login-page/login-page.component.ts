@@ -37,7 +37,7 @@ export class LoginPageComponent implements OnInit {
         /* TODO: Cambiar a cargar valores reales */
         /* Realizar llamado con un id verdadero, o email verdadero haciendo un query filtrado */
 
-        this.profileLoader.getRandomContact(2).subscribe(
+        this.profileLoader.getRandomContact(7).subscribe(
           (responseProfile) => {
             console.log(responseProfile);
             this.randomProfile.setUserData(responseProfile);
