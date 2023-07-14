@@ -7,6 +7,7 @@ import { authGuard } from './guards/authguard/auth.guard';
 import { DoomPageComponent } from './pages/doom-page/doom-page.component';
 import { loguedGuard } from './guards/logued.guard';
 import { LoadingResolverService } from './services/loading-resolver.service';
+import { ProjectPageComponent } from './pages/project-page/project-page.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,11 @@ const routes: Routes = [
     resolve: {
       randomContact: LoadingResolverService,
     },
+  },
+  {
+    path: 'project',
+    component: ProjectPageComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'doom',

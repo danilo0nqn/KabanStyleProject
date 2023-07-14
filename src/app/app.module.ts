@@ -17,6 +17,13 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 import { ProjectsSidebarComponent } from './components/projects-sidebar/projects-sidebar.component';
 import { ProjectsExpansionPanelComponent } from './components/projects-expansion-panel/projects-expansion-panel.component';
 import { LoadingComponent } from './components/loading/loading.component';
+import { UrgentTasksComponent } from './components/urgent-tasks/urgent-tasks.component';
+import { TaskListComponent } from './components/task-list/task-list.component';
+import { PendingTasksComponent } from './components/taskPage/pending-tasks/pending-tasks.component';
+import { OngoingTasksComponent } from './components/taskPage/ongoing-tasks/ongoing-tasks.component';
+import { ForReviewTasksComponent } from './components/taskPage/for-review-tasks/for-review-tasks.component';
+import { CompletedTasksComponent } from './components/taskPage/completed-tasks/completed-tasks.component';
+import { ProjectPageComponent } from './pages/project-page/project-page.component';
 
 
 
@@ -32,6 +39,13 @@ import { LoadingComponent } from './components/loading/loading.component';
     ProjectsSidebarComponent,
     ProjectsExpansionPanelComponent,
     LoadingComponent,
+    UrgentTasksComponent,
+    TaskListComponent,
+    PendingTasksComponent,
+    OngoingTasksComponent,
+    ForReviewTasksComponent,
+    CompletedTasksComponent,
+    ProjectPageComponent,
   ],
   imports: [
     BrowserModule,

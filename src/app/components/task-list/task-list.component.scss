@@ -1,0 +1,51 @@
+.projects-content {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  flex-grow: 1;
+
+  .projects-content-title{
+    text-align: center;
+    font-size: 32px;
+  }
+
+  .projects-content-project{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 30px;
+    border: 1px solid #03bfbc;
+    background: #555555;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+    color: white;
+    padding: 10px;
+    margin: 20px;
+
+    .projects-content-project-title{
+      align-self: center;
+    }
+
+    .projects-content-divider{
+      border: 1px solid #03bfbc;
+      border-radius: 5px;
+      width: 85%;
+    }
+
+    .projects-content-project-task{
+      display: flex;
+      align-items:baseline;
+
+      .projects-content-project-task-title{
+        font-size: larger;
+        margin: 10px;
+        margin-right: 25px;
+      }
+
+      .projects-content-project-task-description{
+
+      }
+    }
+  }
+  
+  
+}
