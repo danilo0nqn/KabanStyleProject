@@ -1,9 +1,9 @@
-.urgent-projects {
+.urgent-tasks {
   display: flex;
   flex-direction: column;
   width: 100%;
 
-  .urgent-project-graphic {
+  .urgent-task-and-details {
     border-radius: 30px;
     border: 1px solid #bf2903;
     background: #555555;
@@ -14,31 +14,53 @@
     padding: 10px;
     margin: 20px;
 
-    .urgent-project {
-      
+    .urgent-task {
+      width: 100%;
+      margin-left: 20px;
+      margin-top: 10px;
 
-      .urgent-name-project {
-      }
-
-      .urgent-project-divider{
+      .urgent-task-divider{
         border: 1px solid #bf2903;
         border-radius: 5px;
       }
-
-      .urgent-project-projects {
-      }
     }
 
-    .urgent-project-graphic {
-      background: transparent;
-      border: 1px solid #03bfbc;
+    .urgent-task-details {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 10px;
+      margin-right: auto;
+      min-width: 300px;
+
+      a{
+        color: #FFF;
+        font-family: SF Pro Text;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-decoration-line: underline;
+        margin-left: 5px;
+      }
+
+      .task-details-doc{
+        margin: 6px;
+        margin-left: 10px;
+      }
+      .task-details-desing{
+        margin-left: 10px;
+      }
     }
   }
 }
 
 @media (max-width: 1100px) {
   
-  .urgent-projects {
+  .urgent-tasks {
     flex-grow: 3;
   }
 }
+
+

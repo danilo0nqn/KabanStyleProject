@@ -47,3 +47,15 @@
     }
   }
 }
+
+@media only screen and (max-width: 750px) {
+  .project-page{
+    background: rgb(56, 57, 133);
+    background: linear-gradient(
+    90deg,
+    rgb(56, 57, 133) 0%,
+    rgba(46, 85, 145, 1) 50%,
+    rgb(56, 57, 133) 100%
+    )
+  }
+}
