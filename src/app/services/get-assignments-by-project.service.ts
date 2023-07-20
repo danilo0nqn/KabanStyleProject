@@ -11,6 +11,6 @@ export class GetAssignmentsByProjectService {
   constructor(private http: HttpClient) {}
 
   getAssignmentsByUser(id: number): Observable<any> {
-    return this.http.get(`https://localhost:7047/api/Assignments/GetAssignmentsByProject?projectid=${id}`);
+    return this.http.get(`https://kanbanprojectapi.azurewebsites.net/api/Assignments/GetAssignmentsByProject?projectid=${id}`);
   }
 }
