@@ -13,6 +13,7 @@ export class LoginPageComponent implements OnInit {
 
   errorLogin: string = '';
   userId!: number;
+  loading: boolean = false;
 
   constructor(
     private router: Router,
@@ -29,6 +30,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   loginUser(value: any) {
+    this.loading = true;
     let { email, password } = value;
 
     this.authService.login(email, password).subscribe(
@@ -50,10 +52,12 @@ export class LoginPageComponent implements OnInit {
           () => console.info('proceso de cargado de usuario a finalizado')
         );
         this.profileLoader.loadProjectsAssignments(this.userId);
+        this.loading = false;
         this.router.navigate(['home']);
       },
       (error) => {
-        this.errorLogin = `${error}`
+        this.loading = false;
+        this.errorLogin = error.error.detail
         console.error(`Ha habido un error al intentar loguearse ${error}`)
       },
       () => console.info('proceso de login finalizado')

@@ -1,5 +1,6 @@
 .login_content {
   display: grid;
+  width: 250px;
 }
 
 .login_title {
@@ -36,15 +37,46 @@
   text-shadow: 2px 5px 5px black;
 }
 
+.register_button{
+  display: flex;
+  justify-self: center;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-shadow: 2px 2px 5px red;
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  height: 35px;
+}
+
+.register_button:hover{
+  cursor: pointer;
+  font-size: larger;
+}
+
 .submit_button {
   display: flex;
   justify-self: center;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  align-self: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
   margin-bottom: 20px;
   margin-top: 20px;
   height: 35px;
+  border: 1px solid rgb(44, 44, 44);
+  border-radius: 20px;
+  background-color: rgb(231, 231, 231);
+}
+
+.submit_button:hover{
+  cursor: pointer;
+  background-color: rgb(252, 222, 159);
 }
 
 .user-not-found{

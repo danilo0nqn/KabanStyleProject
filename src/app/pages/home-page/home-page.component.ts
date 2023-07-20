@@ -86,11 +86,15 @@ export class HomePageComponent implements OnInit {
 
   saveChangePersonalStatus() {
     if (this.userPersonalStatusElement?.nativeElement) {
-      this.userInfo.status =
-        this.userPersonalStatusElement.nativeElement.innerText;
-        sessionStorage.setItem('userInfo', JSON.stringify(this.userInfo))
+      this.userInfo.status = this.userPersonalStatusElement.nativeElement.innerText;
+      this.userPersonalStatus = this.userPersonalStatusElement.nativeElement.innerText;
+      sessionStorage.setItem('userInfo', JSON.stringify(this.userInfo))
     }
-    this.statusChanger.getAssignmentsByUser(this.userPersonalStatus, this.userId)
+    this.statusChanger.getAssignmentsByUser(this.userPersonalStatus, this.userId).subscribe(
+      (response)=> (response),
+      (error) => (error),
+      ()=> console.log("mensaje de edicion termiando")
+    )
     this.canChangePersonalStatus = !this.canChangePersonalStatus;
     this.loading = !this.loading;
 

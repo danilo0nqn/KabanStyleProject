@@ -1,0 +1,64 @@
+<div class="register_content">
+  <form [formGroup]="registerForm" (submit)="submitLogin()">
+    <div class="register_title">
+      <h1>Register</h1>
+      <h6>Campos con * son obligatorios</h6>
+    </div>
+    <div class="register_box-input">
+      <div>
+        <input placeholder="Name*" formControlName="name" class="register_input">
+      </div>
+      <div>
+        <div *ngIf="name?.errors?.['required'] && name?.touched" class="required_label">
+          El campo del nombre es obligatorio
+        </div>
+      </div>
+    </div>
+    <div class="register_box-input">
+      <div >
+        <input placeholder="Last Name*" formControlName="lastName" class="register_input">
+      </div>
+      <div>
+        <div *ngIf="lastName?.errors?.['required'] && lastName?.touched" class="required_label">
+          El campo de contraseña es obligatorio
+        </div>
+      </div>
+    </div>
+    <div class="register_box-input">
+      <div>
+        <input placeholder="Email*" formControlName="email" class="register_input">
+      </div>
+      <div>
+        <div *ngIf="email?.errors?.['required'] && email?.touched" class="required_label">
+          El campo de email es obligatorio
+        </div>
+        <div *ngIf="email?.errors?.['email'] && email?.touched" class="required_label" >
+          El formato del email es incorrecto
+        </div>
+      </div>
+    </div>
+    <div class="register_box-input">
+      <div >
+        <input placeholder="Contraseña*" formControlName="password" class="register_input">
+      </div>
+      <div>
+        <div *ngIf="password?.errors?.['required'] && password?.touched" class="required_label">
+          El campo de contraseña es obligatorio
+        </div>
+      </div>
+    </div>
+    <div class="register_box-input">
+      <input placeholder="LinkedIn URL" formControlName="linkedIn" class="register_input">
+    </div>
+    <div class="register_box-input">
+      <input placeholder="gitHub URL" formControlName="gitHub" class="register_input">
+    </div>
+    <div class="register_box-input">
+      <input placeholder="avatar URL" formControlName="avatar" class="register_input">
+    </div>
+    <h4 class="user-not-found"> {{errorInRegister}} </h4>
+    <div >
+      <button type="submit" [disabled]="!registerForm.valid" class="submit_button">Registrar</button>
+    </div>
+  </form>
+</div>

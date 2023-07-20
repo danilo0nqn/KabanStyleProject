@@ -2,7 +2,7 @@
   <form [formGroup]="loginForm" (submit)="submitLogin()">
     <div class="login_title">
       <h1>Login</h1>
-      <h5>Example: "eve.holt@reqres.in" "cityslicka"</h5>
+      <h5>Example: "admin@admin" "Admin#$%"</h5>
     </div>
     <div class="login_box-input">
       <div>
@@ -27,9 +27,13 @@
         </div>
       </div>
     </div>
-    <h4 class="user-not-found"> {{errorInLogin}} </h4>
+    <h4 class="user-not-found" *ngIf="errorInLogin"> {{errorInLogin}} </h4>
+    <h4 class="user-not-found" *ngIf="loading"> Loading, please wait! </h4>
     <div >
       <button type="submit" [disabled]="!loginForm.valid" class="submit_button">Login</button>
+    </div>
+    <div >
+      <button routerLink="/register" class="register_button">No tenes cuenta? Registrate!</button>
     </div>
   </form>
 </div>

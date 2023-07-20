@@ -34,6 +34,7 @@ import { AssignmentComponent } from './components/assignment/assignment.componen
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 import { FilterAssignmentsPipe } from './pipes/filter-assignments.pipe';
+import { NewProjectComponent } from './pages/new-project/new-project.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { FilterAssignmentsPipe } from './pipes/filter-assignments.pipe';
     AssignmentComponent,
     RegisterPageComponent,
     RegisterFormComponent,
-    FilterAssignmentsPipe
+    FilterAssignmentsPipe,
+    NewProjectComponent
   ],
   imports: [
     BrowserModule,

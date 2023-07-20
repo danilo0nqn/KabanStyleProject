@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { authGuard } from './guards/authguard/auth.guard';
@@ -10,6 +11,7 @@ import { LoadingResolverService } from './services/loading-resolver.service';
 import { ProjectPageComponent } from './pages/project-page/project-page.component';
 import { TestsPageComponent } from './pages/tests-page/tests-page.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { NewProjectComponent } from './pages/new-project/new-project.component';
 
 const routes: Routes = [
   {
@@ -23,6 +25,11 @@ const routes: Routes = [
     canActivate: [loguedGuard],
   },
   {
+    path: 'register',
+    component: RegisterPageComponent,
+    canActivate: [loguedGuard],
+  },
+  {
     path: 'home',
     component: HomePageComponent,
     canActivate: [authGuard],
@@ -33,6 +40,11 @@ const routes: Routes = [
   {
     path: 'project',
     component: ProjectPageComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'newProject',
+    component: NewProjectComponent,
     canActivate: [authGuard],
   },
   {

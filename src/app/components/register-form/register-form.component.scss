@@ -1,0 +1,64 @@
+.register_content {
+  display: grid;
+  width: 300px;
+}
+
+.register_title {
+  text-align: center;
+  margin-bottom: 15px;
+  margin-top: 20px;
+}
+
+.register_box-input {
+  grid-template-columns: max-content 1fr;
+  align-items: center;
+  column-gap: 0.75rem;
+}
+
+.register_input {
+  width: 100%;
+  padding-block: 0.8rem;
+  background: none;
+  color: white;
+  position: relative;
+  z-index: 1;
+  border: none;
+  border-bottom: 2px solid white;
+  margin-bottom: 20px;
+}
+
+.register_input::placeholder {
+  color: rgb(228, 228, 228);
+  text-shadow: 1px 1px 0.5px red
+}
+
+.ng-star-inserted {
+  color: wheat;
+  border: none;
+  text-shadow: 2px 5px 5px black;
+}
+
+.submit_button {
+  display: flex;
+  justify-self: center;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  height: 35px;
+  border: 1px solid rgb(44, 44, 44);
+  border-radius: 20px;
+  background-color: rgb(231, 231, 231);
+}
+
+.submit_button:hover{
+  cursor: pointer;
+  background-color: rgb(252, 222, 159);
+}
+
+.user-not-found{
+  color: rgb(79, 166, 216);
+  text-shadow: 1px 2px 0.5px black;
+  text-align: center;
+}

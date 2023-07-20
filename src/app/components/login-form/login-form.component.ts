@@ -11,6 +11,7 @@ export class LoginFormComponent implements OnInit, OnChanges{
   loginForm! : FormGroup
   @Input() errorInLogin = ''
   @Output() loginAction: EventEmitter<{}> = new EventEmitter<{}>();
+  @Input() loading: boolean = false;
 
   constructor (private formBuilder: FormBuilder){}
 
@@ -37,6 +38,7 @@ export class LoginFormComponent implements OnInit, OnChanges{
 
   submitLogin(){
     console.log('en submit pero no submiteado')
+    this.errorInLogin = '';
     if (this.loginForm.valid){
       console.log('submiteado')
       this.loginAction.emit(this.loginForm.value)

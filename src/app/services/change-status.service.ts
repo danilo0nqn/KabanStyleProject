@@ -12,6 +12,7 @@ export class ChangeStatusService {
     const body = {
       message : status
     }
+    console.log(body)
     return this.http.put(`https://kanbanprojectapi.azurewebsites.net/api/Users/ChangeStatusMessage?userId=${id}`, body);
   }
 }
