@@ -27,6 +27,7 @@ export class ProjectPageComponent implements OnInit{
     {
       console.log('QueryParams: ', params.id);
       this.projectId = params.id
+      this.reloadAssignments();
     })
 
 
@@ -54,5 +55,22 @@ export class ProjectPageComponent implements OnInit{
     this.userProject = this.userProjects.find((p => p.id = this.projectId))
   }
 
+  private reloadAssignments(): void {
+    this.assignmentsByProjectService.getAssignmentsByUser(this.projectId).subscribe(
+      (responseProfile) => {
+        this.assignments = responseProfile
+        console.log(this.assignments)
+        this.pendingAssignments = this.assignments.filter(a => a.stage === 0);
+        this.ongoingAssignments = this.assignments.filter(a => a.stage === 1);
+        this.forReviewAssignments = this.assignments.filter(a => a.stage === 2);
+        this.completedAssignments = this.assignments.filter(a => a.stage === 3);
+      },
+      (error) =>{
+        console.error(`Ha habido un error al intentar cargar las tareas del proyecto con id: ${this.projectId}. Error: ${error}`);
+      },
+      () => console.info('proceso de cargado de tareas de este pryjecto a finalizado')
+    );
+    this.userProject = this.userProjects.find((p => p.id = this.projectId))
+  }
 
 }

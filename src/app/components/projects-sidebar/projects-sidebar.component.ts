@@ -1,4 +1,3 @@
-
 import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, Component, OnChanges, OnDestroy, SimpleChanges, OnInit} from '@angular/core';
 import {NgIf, NgFor} from '@angular/common';
@@ -36,4 +35,5 @@ export class ProjectsSidebarComponent implements OnDestroy, OnInit{
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
+
 }
