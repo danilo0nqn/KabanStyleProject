@@ -8,12 +8,14 @@ import { DoomPageComponent } from './pages/doom-page/doom-page.component';
 import { loguedGuard } from './guards/logued.guard';
 import { LoadingResolverService } from './services/loading-resolver.service';
 import { ProjectPageComponent } from './pages/project-page/project-page.component';
+import { TestsPageComponent } from './pages/tests-page/tests-page.component';
+import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'login',
+    redirectTo: 'home',
   },
   {
     path: 'login',
@@ -38,6 +40,15 @@ const routes: Routes = [
     component: DoomPageComponent,
     canActivate: [authGuard],
   },
+  {
+    path: 'tests',
+    component: TestsPageComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: '**',
+    component: NotFoundPageComponent
+  }
 ];
 
 @NgModule({

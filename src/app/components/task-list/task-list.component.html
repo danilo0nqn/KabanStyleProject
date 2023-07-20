@@ -1,63 +1,20 @@
 <div class="projects-content">
-  <h1 class="projects-content-title">projects and task!</h1>
-  <div class="projects-content-project">
-    <div class="projects-content-project-title">
-      <h1>project 1</h1>
-    </div>
-    <hr class="projects-content-divider">
-    <div class="projects-content-project-task">
-      <div class="projects-content-project-task-title">
-        Task 1
+  <div class="projects-content-project" *ngFor="let item of userProjects, let i = index" >
+    <ng-container *ngIf="userProjects">
+      <div class="projects-content-project-title">
+        <h1>{{userProjects[i].name}}</h1>
       </div>
-      <div class="projects-content-project-task-description">
-        Description task 1
-      </div>
-    </div>
-    <div class="projects-content-project-task">
-      <div class="projects-content-project-task-title">
-        Task 2
-      </div>
-      <div class="projects-content-project-task-description">
-        Description task 2
-      </div>
-    </div>
-    <div class="projects-content-project-task">
-      <div class="projects-content-project-task-title">
-        Task 3
-      </div>
-      <div class="projects-content-project-task-description">
-        Description task 3
-      </div>
-    </div>
-  </div>
-  <div class="projects-content-project">
-    <div class="projects-content-project-title">
-      <h1>project 2</h1>
-    </div>
-    <hr class="projects-content-divider">
-    <div class="projects-content-project-task">
-      <div class="projects-content-project-task-title">
-        Task 1
-      </div>
-      <div class="projects-content-project-task-description">
-        Description task 1
-      </div>
-    </div>
-    <div class="projects-content-project-task">
-      <div class="projects-content-project-task-title">
-        Task 2
-      </div>
-      <div class="projects-content-project-task-description">
-        Description task 2
-      </div>
-    </div>
-    <div class="projects-content-project-task">
-      <div class="projects-content-project-task-title">
-        Task 2
-      </div>
-      <div class="projects-content-project-task-description">
-        Description task 2
-      </div>
-    </div>
+      <hr class="projects-content-divider">
+      <ng-container *ngIf="userAssignments">
+        <div class="projects-content-project-task" *ngFor="let item of userAssignments | filterAssignments: userProjects[i].id, let j = index">
+            <div class="projects-content-project-task-title">
+              {{userAssignments[j].name}}
+            </div>
+            <div class="projects-content-project-task-description">
+              {{userAssignments[j].description}}
+            </div>
+        </div>
+      </ng-container>
+    </ng-container>
   </div>
 </div>

@@ -7,9 +7,10 @@
         Projects
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <!-- TODO: implements ngfor -->
-    <a matListItemLine [routerLink]="['project']">Project 1</a><br>
-    <a matListItemLine [routerLink]="['project']">Project 2</a><br>
-    <a matListItemLine [routerLink]="['project']">Project 3</a>
+    <ng-container *ngIf="userProjects;else noProjects">
+      <a *ngFor="let route of userProjects, let i = index" mat-list-item [routerLink]="['project']"> {{userProjects[i].name}}</a>
+    </ng-container>
+    <ng-template #noProjects>
+    </ng-template>
   </mat-expansion-panel>
 </mat-accordion>

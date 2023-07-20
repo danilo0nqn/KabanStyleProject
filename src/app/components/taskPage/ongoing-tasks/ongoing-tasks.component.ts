@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./ongoing-tasks.component.scss']
 })
 export class OngoingTasksComponent {
+  /* TODO: Cuadno cargo una tarea, guardar el ID del owner para la ventana popup */
 
 }

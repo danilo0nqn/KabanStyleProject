@@ -1,44 +1,22 @@
-<div class="urgent-tasks">
-  <!-- TODO: edit with ngFor -->
-  <div class="urgent-task-and-details">
-    <div class="urgent-task">
+<div class="urgent-tasks" *ngFor="let item of userAssignments, let i = index">
+ <div class="urgent-task-and-details" *ngIf="i < 4">
+    <div class="urgent-task" >
       <div class="urgent-task-name">
-        <h1>Task 3 title of project 2 (Urgent)</h1>
+        <h1> {{userAssignments[i].name}} </h1>
       </div>
       <hr class="urgent-task-divider">
       <div class="urgent-task-description">
-        <h3>Description of Task</h3>
+        <h3>{{userAssignments[i].description}}</h3>
       </div>
     </div>
     <div class="urgent-task-details">
       <div class="task-details-doc">
         <img src="../../../../assets/img/notion.png" alt="">
-        <a href="" target="_blank">link to documentation</a>
+        <a [href]="userAssignments[i].descriptionURL" target="_blank">link to documentation</a>
       </div>
       <div class="task-details-desing">
         <img src="../../../../assets/img/figma.png" alt="">
-        <a href="" target="_blank">link to desing</a>
-      </div>
-    </div>
-  </div>
-  <div class="urgent-task-and-details">
-    <div class="urgent-task">
-      <div class="urgent-task-name">
-        <h1>Task 3 title of project 2 (Urgent)</h1>
-      </div>
-      <hr class="urgent-task-divider">
-      <div class="urgent-task-description">
-        <h3>Description of Task</h3>
-      </div>
-    </div>
-    <div class="urgent-task-details">
-      <div class="task-details-doc">
-        <img src="../../../../assets/img/notion.png" alt="">
-        <a href="" target="_blank">link to documentation</a>
-      </div>
-      <div class="task-details-desing">
-        <img src="../../../../assets/img/figma.png" alt="">
-        <a href="" target="_blank">link to desing</a>
+        <a [href]="userAssignments[i].designURL" target="_blank">link to desing</a>
       </div>
     </div>
   </div>

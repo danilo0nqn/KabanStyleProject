@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Admin",
+    "lastName": "Admin",
+    "email": "admin@admin",
+    "password": "Admin#$%",
+    "status": "Hi! I'm the admin and the creator of this app. You can contact me at daniloddc.92@gmail.com",
+    "linkedIn": "https://www.linkedin.com/in/danilodelcollado/",
+    "gitHub": "https://github.com/danilo0nqn",
+    "avatar": "",
+    "userType": "Admin",
+    "id": 1,
+    "createdDate": "2023-07-19T01:44:30.0940911",
+    "createdBy": "From Website",
+    "updatedBy": "",
+    "updatedAt": "0001-01-01T00:00:00"
+  },
+  {
+    "name": "Danilo",
+    "lastName": "Del Collado",
+    "email": "daniloddc.92@gmail.com",
+    "password": "Contraseña32",
+    "status": "Hi! I'm the admin and the creator of this app. You can contact me at daniloddc.92@gmail.com",
+    "linkedIn": "https://www.linkedin.com/in/danilodelcollado/",
+    "gitHub": "https://github.com/danilo0nqn",
+    "avatar": "",
+    "userType": "Admin",
+    "id": 2,
+    "createdDate": "2023-07-19T01:48:32.0375963",
+    "createdBy": "From Website",
+    "updatedBy": "",
+    "updatedAt": "0001-01-01T00:00:00"
+  }
+]

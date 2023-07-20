@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Testing Of API",
+    "description": "Testing of every method on this API",
+    "id": 1,
+    "createdDate": "2023-07-19T02:09:57.3401781",
+    "createdBy": "Admin",
+    "updatedBy": "",
+    "updatedAt": "0001-01-01T00:00:00"
+  },
+  {
+    "name": "Project 2!",
+    "description": "This is the second project for testing purposes on website",
+    "id": 2,
+    "createdDate": "2023-07-19T02:16:07.8566198",
+    "createdBy": "Admin",
+    "updatedBy": "",
+    "updatedAt": "0001-01-01T00:00:00"
+  }
+]

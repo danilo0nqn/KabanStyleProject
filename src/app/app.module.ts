@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,7 +19,6 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { ProjectsSidebarComponent } from './components/projects-sidebar/projects-sidebar.component';
 import { ProjectsExpansionPanelComponent } from './components/projects-expansion-panel/projects-expansion-panel.component';
-import { LoadingComponent } from './components/loading/loading.component';
 import { UrgentTasksComponent } from './components/urgent-tasks/urgent-tasks.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
 import { PendingTasksComponent } from './components/taskPage/pending-tasks/pending-tasks.component';
@@ -24,7 +26,14 @@ import { OngoingTasksComponent } from './components/taskPage/ongoing-tasks/ongoi
 import { ForReviewTasksComponent } from './components/taskPage/for-review-tasks/for-review-tasks.component';
 import { CompletedTasksComponent } from './components/taskPage/completed-tasks/completed-tasks.component';
 import { ProjectPageComponent } from './pages/project-page/project-page.component';
-
+import { ContactDetailsComponent } from './components/contact-details/contact-details.component';
+import { TestsPageComponent } from './pages/tests-page/tests-page.component';
+import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { PopupTestComponent } from './components/popup-test/popup-test.component';
+import { AssignmentComponent } from './components/assignment/assignment.component';
+import { RegisterPageComponent } from './pages/register-page/register-page.component';
+import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { FilterAssignmentsPipe } from './pipes/filter-assignments.pipe';
 
 
 @NgModule({
@@ -38,7 +47,6 @@ import { ProjectPageComponent } from './pages/project-page/project-page.componen
     LoginFormComponent,
     ProjectsSidebarComponent,
     ProjectsExpansionPanelComponent,
-    LoadingComponent,
     UrgentTasksComponent,
     TaskListComponent,
     PendingTasksComponent,
@@ -46,6 +54,14 @@ import { ProjectPageComponent } from './pages/project-page/project-page.componen
     ForReviewTasksComponent,
     CompletedTasksComponent,
     ProjectPageComponent,
+    ContactDetailsComponent,
+    TestsPageComponent,
+    NotFoundPageComponent,
+    PopupTestComponent,
+    AssignmentComponent,
+    RegisterPageComponent,
+    RegisterFormComponent,
+    FilterAssignmentsPipe
   ],
   imports: [
     BrowserModule,
@@ -56,7 +72,9 @@ import { ProjectPageComponent } from './pages/project-page/project-page.componen
     ReactiveFormsModule,
 
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

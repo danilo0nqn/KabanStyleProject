@@ -1,0 +1,68 @@
+[
+  {
+    "name": "Testing Assignment controller",
+    "description": "Testing Assignment controller",
+    "beingDoneById": 1,
+    "projectId": 1,
+    "priority": 4,
+    "stage": 2,
+    "id": 1,
+    "createdDate": "2023-07-18T23:12:39.0743074",
+    "createdBy": "",
+    "updatedBy": "admin@admin",
+    "updatedAt": "2023-07-19T02:38:05.96058"
+  },
+  {
+    "name": "Assignment 2",
+    "description": "Assignment meant for testing purposes",
+    "beingDoneById": 1,
+    "projectId": 2,
+    "priority": 0,
+    "stage": 1,
+    "id": 4,
+    "createdDate": "2023-07-18T23:22:55.9343472",
+    "createdBy": "",
+    "updatedBy": "",
+    "updatedAt": "0001-01-01T00:00:00"
+  },
+  {
+    "name": "Assignment 3",
+    "description": "Assignment meant for testing purposes",
+    "beingDoneById": 1,
+    "projectId": 1,
+    "priority": 4,
+    "stage": 1,
+    "id": 5,
+    "createdDate": "2023-07-18T23:23:12.1246087",
+    "createdBy": "",
+    "updatedBy": "admin@admin",
+    "updatedAt": "2023-07-19T02:39:25.6201913"
+  },
+  {
+    "name": "Assignment 5",
+    "description": "Testing connection to sql server on azure",
+    "beingDoneById": 1,
+    "projectId": 2,
+    "priority": 3,
+    "stage": 1,
+    "id": 6,
+    "createdDate": "2023-07-18T23:23:20.5269202",
+    "createdBy": "",
+    "updatedBy": "admin@admin",
+    "updatedAt": "2023-07-19T02:39:47.8659672"
+  },
+  {
+    "name": "Assignment 6",
+    "description": "Assignment meant for testing purposes",
+    "beingDoneById": 1,
+    "projectId": 2,
+    "priority": 0,
+    "stage": 1,
+    "id": 7,
+    "createdDate": "2023-07-18T23:23:24.7840834",
+    "createdBy": "",
+    "updatedBy": "",
+    "updatedAt": "0001-01-01T00:00:00"
+  }
+]
+

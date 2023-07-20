@@ -17,7 +17,7 @@ export class AuthService {
       email: email,
       password: password
     }
-    return this.http.post('https://reqres.in/api/login', body)
+    return this.http.post('https://kanbanprojectapi.azurewebsites.net/api/Accounts/GetToken', body)
   }
 
   setToken(token: string | null): void {

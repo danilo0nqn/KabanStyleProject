@@ -1,7 +1,8 @@
 
 import {MediaMatcher} from '@angular/cdk/layout';
-import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
+import {ChangeDetectorRef, Component, OnChanges, OnDestroy, SimpleChanges, OnInit} from '@angular/core';
 import {NgIf, NgFor} from '@angular/common';
+import { Project } from 'src/app/models/project';
 
 
 @Component({
@@ -9,7 +10,10 @@ import {NgIf, NgFor} from '@angular/common';
   templateUrl: './projects-sidebar.component.html',
   styleUrls: ['./projects-sidebar.component.scss']
 })
-export class ProjectsSidebarComponent {
+export class ProjectsSidebarComponent implements OnDestroy, OnInit{
+
+  userProjects?: Project[];
+  storedProjects?: string | null ;
 
   mobileQuery: MediaQueryList;
 
@@ -21,8 +25,15 @@ export class ProjectsSidebarComponent {
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
 
+  ngOnInit(): void {
+    this.storedProjects = sessionStorage.getItem('userProjects')
+    if (this.storedProjects) {
+      this.userProjects = JSON.parse(this.storedProjects);
+      console.log(this.userProjects)
+    }
+  }
+  
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
-
 }

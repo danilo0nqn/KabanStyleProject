@@ -1,8 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProfileLoaderService } from 'src/app/services/profile-loader.service';
-import { RandomProfileService } from 'src/app/services/random-profile.service';
 
 @Component({
   selector: 'app-login-page',
@@ -11,13 +11,13 @@ import { RandomProfileService } from 'src/app/services/random-profile.service';
 })
 export class LoginPageComponent implements OnInit {
 
-  errorLogin: string = ''
+  errorLogin: string = '';
+  userId!: number;
 
   constructor(
     private router: Router,
     private authService: AuthService,
     private profileLoader: ProfileLoaderService,
-    private randomProfile: RandomProfileService
   ) {}
 
   ngOnInit(): void {
@@ -33,27 +33,27 @@ export class LoginPageComponent implements OnInit {
 
     this.authService.login(email, password).subscribe(
       (response) => {
-        console.log(response);
         sessionStorage.setItem('token', response.token);
+        sessionStorage.setItem('userId', response.id)
+        this.userId = response.id;
         this.authService.setToken(response.token);
         this.errorLogin = '';
 
-        /* TODO: Cambiar a cargar valores reales */
-        /* Realizar llamado con un id verdadero, o email verdadero haciendo un query filtrado */
-
-        this.profileLoader.getRandomContact(3).subscribe(
+        this.profileLoader.getUserInfo(this.userId).subscribe(
           (responseProfile) => {
-            console.log(responseProfile);
-            this.randomProfile.setUserData(responseProfile);
+            sessionStorage.setItem('userInfo', JSON.stringify(responseProfile))
           },
-          (error) =>console.error(`Ha habido un error al intentar cargar el contacto falso de reqres ${error}`),
-          () => console.info('proceso de cargado de contacto falso de reqres')
+          (error) =>{
+            console.error(`Ha habido un error al intentar cargar el usuario ${error}`);
+            sessionStorage.removeItem('token')
+          },
+          () => console.info('proceso de cargado de usuario a finalizado')
         );
-        
+        this.profileLoader.loadProjectsAssignments(this.userId);
         this.router.navigate(['home']);
       },
       (error) => {
-        this.errorLogin = 'User Not Found.'
+        this.errorLogin = `${error}`
         console.error(`Ha habido un error al intentar loguearse ${error}`)
       },
       () => console.info('proceso de login finalizado')

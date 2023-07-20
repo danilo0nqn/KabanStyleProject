@@ -52,7 +52,10 @@ export class SidebarComponent implements OnDestroy, OnInit {
 
   desloguearse() {
     sessionStorage.removeItem('token');
-    sessionStorage.removeItem('userData');
+    sessionStorage.removeItem('userInfo');
+    sessionStorage.removeItem('userId');
+    sessionStorage.removeItem('userAssignments')
+    sessionStorage.removeItem('userProjects')
     this.token = null;
     this.canActivate = false;
     this.changeDetectorRef.detectChanges();

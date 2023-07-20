@@ -1,0 +1,24 @@
+.login_page{
+  position: relative;
+  height: 100%;
+  display: grid;
+  align-items: center;
+}
+
+.login_img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.login_form{
+  justify-self: center;
+  position: relative;
+  border: 2px solid white;
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  width: fit-content;
+  padding: 30px;
+}

@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { RandomProfileService } from './random-profile.service';
+import { ContactPopupService } from './contact-popup.service';
 
-describe('RandomProfileService', () => {
-  let service: RandomProfileService;
+describe('ContactPopupService', () => {
+  let service: ContactPopupService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(RandomProfileService);
+    service = TestBed.inject(ContactPopupService);
   });
 
   it('should be created', () => {
