@@ -1,6 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Assignment } from 'src/app/models/assignment';
+import { Project } from 'src/app/models/project';
 import { GetAssignmentsByProjectService } from 'src/app/services/get-assignments-by-project.service';
 
 @Component({
@@ -17,6 +18,9 @@ export class ProjectPageComponent implements OnInit{
   ongoingAssignments!: Assignment[];
   forReviewAssignments!: Assignment[];
   completedAssignments!: Assignment[];
+  userProjects!: Project[];
+  userProject?: Project;
+  storedProjects?: string | null ;
 
   constructor( private route: ActivatedRoute, private assignmentsByProjectService : GetAssignmentsByProjectService ){
     this.route.queryParams.subscribe((params: any) =>
@@ -24,6 +28,7 @@ export class ProjectPageComponent implements OnInit{
       console.log('QueryParams: ', params.id);
       this.projectId = params.id
     })
+
 
     this.assignmentsByProjectService.getAssignmentsByUser(this.projectId).subscribe(
       (responseProfile) => {
@@ -41,8 +46,12 @@ export class ProjectPageComponent implements OnInit{
     );
   }
 
-ngOnInit(): void {
-    
+  ngOnInit(): void {
+    this.storedProjects = sessionStorage.getItem('userProjects');
+    if (this.storedProjects) {
+      this.userProjects = JSON.parse(this.storedProjects)
+    }
+    this.userProject = this.userProjects.find((p => p.id = this.projectId))
   }
 
 
