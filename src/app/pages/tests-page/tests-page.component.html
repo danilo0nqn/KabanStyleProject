@@ -1,10 +1,2 @@
 <button (click)="popup(2)">Open Popup with service</button>
 <div #popupContainer></div>
-<button (click)="getProjects()">Get projects</button>
-<br>
-<ul>
-  <li *ngFor="let assignment of assignments">
-    Name of assignment: {{ assignment.name }} <br>
-    Description of assignment: {{ assignment.description}}
-  </li>
-</ul>

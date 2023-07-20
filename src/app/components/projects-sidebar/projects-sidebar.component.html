@@ -3,7 +3,7 @@
     <mat-sidenav #snav [mode]="'side'" fixedTopGap="56" class="sidebar" opened="true" class="sidebar" >
       <mat-nav-list class="sidebar_list">
         <ng-container *ngIf="userProjects;else noProjects">
-          <a *ngFor="let route of userProjects, let i = index" mat-list-item [routerLink]="['project']"> {{userProjects[i].name}}</a>
+          <a *ngFor="let route of userProjects, let i = index" mat-list-item [routerLink]="['project']" [queryParams]="{id: userProjects[i].id}"> {{userProjects[i].name}}</a>
         </ng-container>
         <ng-template #noProjects>
         </ng-template>

@@ -3,56 +3,36 @@
     Ongoing Tasks
   </div>
   <div class="task-component-tasks">
-    <!-- TODO: implement ngFor -->
-    <div class="task-component-task">
-      <div class="task-name">
-        Task Name
-      </div>
-      <div class="task-details-button">
-        <div class="task-details">
-          <div class="task-details-doc">
-            <img src="../../../../assets/img/notion.png" alt="">
-            <a href="">link to documentation</a>
+    <ng-container *ngIf="ongoingAssignments">
+      <div class="task-component-task" *ngFor="let item of ongoingAssignments, let i = index">
+        <div class="task-name">
+          {{ongoingAssignments[i].name}}
+        </div>
+        <div class="task-details-button">
+          <div class="task-details">
+            <div class="task-details-doc">
+              <img src="../../../../assets/img/notion.png" alt="">
+              <a [href]="ongoingAssignments[i].descriptionURL">link to documentation</a>
+            </div>
+            <div class="task-details-desing">
+              <img src="../../../../assets/img/figma.png" alt="">
+              <a [href]="ongoingAssignments[i].designURL">link to desing</a>
+            </div>
+            <div class="task-details-owner">
+              <img src="../../../../assets/img/owner.png" alt="">
+              <a [href]="">{{ongoingAssignments[i].beingDoneById}}</a>
+            </div>
           </div>
-          <div class="task-details-desing">
-            <img src="../../../../assets/img/figma.png" alt="">
-            <a href="">link to desing</a>
-          </div>
-          <div class="task-details-owner">
-            <img src="../../../../assets/img/owner.png" alt="">
-            <a href="">owner</a>
+          <div class="task-button">
+            <button>Leave Task</button>
+            <button>Send to Review</button>
           </div>
         </div>
-        <div class="task-button">
-          <button>Leave Task</button>
-          <button>Send to Review</button>
-        </div>
       </div>
-    </div>
-    <div class="task-component-task">
-      <div class="task-name">
-        Task Name
-      </div>
-      <div class="task-details-button">
-        <div class="task-details">
-          <div class="task-details-doc">
-            <img src="../../../../assets/img/notion.png" alt="">
-            <a href="">link to documentation</a>
-          </div>
-          <div class="task-details-desing">
-            <img src="../../../../assets/img/figma.png" alt="">
-            <a href="">link to desing</a>
-          </div>
-          <div class="task-details-owner">
-            <img src="../../../../assets/img/owner.png" alt="">
-            <a href="">owner</a>
-          </div>
-        </div>
-        <div class="task-button">
-          <button>Leave Task</button>
-          <button>Send to Review</button>
-        </div>
-      </div>
-    </div>
+    </ng-container>
+    <ng-container *ngIf="ongoingAssignments.length == 0">
+      No ongoing tasks!
+    </ng-container>
+    
   </div>
 </div>

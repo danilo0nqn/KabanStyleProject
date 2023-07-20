@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Assignment } from 'src/app/models/assignment';
 
 @Component({
   selector: 'app-ongoing-tasks',
   templateUrl: './ongoing-tasks.component.html',
   styleUrls: ['./ongoing-tasks.component.scss']
 })
-export class OngoingTasksComponent {
-  /* TODO: Cuadno cargo una tarea, guardar el ID del owner para la ventana popup */
 
+export class OngoingTasksComponent {
+
+  @Input() ongoingAssignments!: Assignment[]
+  
 }

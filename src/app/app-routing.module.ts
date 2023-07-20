@@ -36,6 +36,11 @@ const routes: Routes = [
     canActivate: [authGuard],
   },
   {
+    path: 'project/:id',
+    component: ProjectPageComponent,
+    canActivate: [authGuard],
+  },
+  {
     path: 'doom',
     component: DoomPageComponent,
     canActivate: [authGuard],

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Assignment } from 'src/app/models/assignment';
 
 @Component({
   selector: 'app-for-review-tasks',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
 })
 export class ForReviewTasksComponent {
   /* TODO: Cuadno cargo una tarea, guardar el ID del owner para la ventana popup */
-
+  @Input() forReviewAssignments!: Assignment[]
 }

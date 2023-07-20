@@ -3,57 +3,35 @@
     Completed Tasks
   </div>
   <div class="task-component-tasks">
-    <!-- TODO: implement ngFor -->
-    <div class="task-component-task">
-      <div class="task-name">
-        Task Name
-      </div>
-      <div class="task-details-button">
-        <div class="task-details">
-          <div class="task-details-doc">
-            <img src="../../../../assets/img/notion.png" alt="">
-            <a href="">link to documentation</a>
+    <ng-container *ngIf="completedAssignments">
+      <div class="task-component-task" *ngFor="let item of completedAssignments, let i = index">
+        <div class="task-name">
+          {{completedAssignments[i].name}}
+        </div>
+        <div class="task-details-button">
+          <div class="task-details">
+            <div class="task-details-doc">
+              <img src="../../../../assets/img/notion.png" alt="">
+              <a [href]="completedAssignments[i].descriptionURL">link to documentation</a>
+            </div>
+            <div class="task-details-desing">
+              <img src="../../../../assets/img/figma.png" alt="">
+              <a [href]="completedAssignments[i].designURL">link to desing</a>
+            </div>
+            <div class="task-details-owner">
+              <img src="../../../../assets/img/owner.png" alt="">
+              <a [href]="completedAssignments[i].beingDoneById">owner</a>
+            </div>
           </div>
-          <div class="task-details-desing">
-            <img src="../../../../assets/img/figma.png" alt="">
-            <a href="">link to desing</a>
-          </div>
-          <div class="task-details-owner">
+          <div class="task-reviewed">
+            <p>reviewed by</p>
             <img src="../../../../assets/img/owner.png" alt="">
-            <a href="">owner</a>
+            <a [href]="completedAssignments[i].updatedBy">owner</a>
           </div>
-        </div>
-        <div class="task-reviewed">
-          <p>reviewed by</p>
-          <img src="../../../../assets/img/owner.png" alt="">
-          <a href="">owner</a>
         </div>
       </div>
-    </div>
-    <div class="task-component-task">
-      <div class="task-name">
-        Task Name
-      </div>
-      <div class="task-details-button">
-        <div class="task-details">
-          <div class="task-details-doc">
-            <img src="../../../../assets/img/notion.png" alt="">
-            <a href="">link to documentation</a>
-          </div>
-          <div class="task-details-desing">
-            <img src="../../../../assets/img/figma.png" alt="">
-            <a href="">link to desing</a>
-          </div>
-          <div class="task-details-owner">
-            <img src="../../../../assets/img/owner.png" alt="">
-            <a href="">owner</a>
-          </div>
-        </div>
-        <div class="task-reviewed">
-          <p>reviewed by</p>
-          <img src="../../../../assets/img/owner.png" alt="">
-          <a href="">owner</a>
-        </div>
-      </div>
-    </div>
+    </ng-container>
+    <ng-container *ngIf="completedAssignments.length == 0">
+      No completed tasks!
+    </ng-container>
   </div>
