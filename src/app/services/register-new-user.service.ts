@@ -25,6 +25,6 @@ export class RegisterNewUserService {
     }
     console.log(userData)
     console.log(body)
-    return this.http.post('https://localhost:7047/api/Users/PostUserAndUserLogin', body)
+    return this.http.post('https://kanbanprojectapi.azurewebsites.net/api/Users/PostUserAndUserLogin', body)
   }
 }
