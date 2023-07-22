@@ -13,6 +13,7 @@ export class UrgentTasksComponent implements OnInit{
   userId!: number;
   storedId!: string | null;
   noAssignments: boolean = false;
+  noUrgentTasks:boolean = false;
   
   constructor( private urgentAssignmentsByUserService : UrgentAssignmentsByUserService){
     this.storedId = sessionStorage.getItem('userId')
@@ -28,8 +29,10 @@ export class UrgentTasksComponent implements OnInit{
         console.log(responseAssignments)
         if (responseAssignments.length == 0){
           this.noAssignments = true;
+          this.noUrgentTasks = true;
           console.log("no hay tareas urgentes")
         } else{
+          this.noUrgentTasks = false;
           this.userAssignments = responseAssignments
         }
         console.log(this.userAssignments)

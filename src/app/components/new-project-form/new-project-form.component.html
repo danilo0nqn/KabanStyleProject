@@ -1,0 +1,32 @@
+<div class="newProject_content">
+  <form [formGroup]="newProjectForm" (submit)="submitNewProjectForm()">
+    <div class="newProject_title">
+      <h1>New Project!</h1>
+      <h6>Campos con * son obligatorios</h6>
+    </div>
+    <div class="newProject_box-input">
+      <div>
+        <input placeholder="Name*" formControlName="name" class="newProject_input">
+      </div>
+      <div>
+        <div *ngIf="name?.errors?.['required'] && name?.touched" class="required_label">
+          El campo del nombre es obligatorio
+        </div>
+      </div>
+    </div>
+    <div class="newProject_box-input">
+      <div >
+        <input placeholder="Description*" formControlName="description" class="newProject_input">
+      </div>
+      <div>
+        <div *ngIf="description?.errors?.['required'] && description?.touched" class="required_label">
+          El campo de descripcion es obligatorio
+        </div>
+      </div>
+    </div>
+    <h4 class="error-found"> {{errorInNewProject}} </h4>
+    <div >
+      <button type="submit" [disabled]="!newProjectForm.valid" class="submit_button">Create new project!</button>
+    </div>
+  </form>
+</div>

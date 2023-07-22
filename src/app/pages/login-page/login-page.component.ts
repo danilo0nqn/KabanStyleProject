@@ -41,16 +41,7 @@ export class LoginPageComponent implements OnInit {
         this.authService.setToken(response.token);
         this.errorLogin = '';
 
-        this.profileLoader.getUserInfo(this.userId).subscribe(
-          (responseProfile) => {
-            sessionStorage.setItem('userInfo', JSON.stringify(responseProfile))
-          },
-          (error) =>{
-            console.error(`Ha habido un error al intentar cargar el usuario ${error}`);
-            sessionStorage.removeItem('token')
-          },
-          () => console.info('proceso de cargado de usuario a finalizado')
-        );
+        this.profileLoader.loadUserInfo(this.userId)
         this.profileLoader.loadProjectsAssignments(this.userId);
         this.loading = false;
         this.router.navigate(['home']);

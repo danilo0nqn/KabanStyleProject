@@ -18,3 +18,19 @@
     </ng-container>
   </div>
 </div>
+<div class="projects-content" *ngIf="!noAssignments">
+  <div class="projects-content-project">
+    <div class="projects-content-project-title">
+      <h1>You have no projects</h1>
+    </div>
+    <hr class="projects-content-divider">
+      <div class="projects-content-project-task">
+        <div class="projects-content-project-task-title">
+          You should open the sidebar and add a project!
+        </div>
+        <div class="projects-content-project-task-description">
+          You can add assignments inside the project.
+        </div>
+      </div>
+  </div>
+</div>

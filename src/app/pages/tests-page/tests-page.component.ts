@@ -11,7 +11,6 @@ import { ContactDetailsComponent } from 'src/app/components/contact-details/cont
 export class TestsPageComponent {
   @ViewChild('popupContainer', { read: ViewContainerRef, static: true }) popupContainer!: ViewContainerRef;
 
-  private popupComponent: ComponentRef<ContactDetailsComponent> | undefined;
   assignments: any[] = []; 
   
   constructor(private contactPopupService: ContactPopupService ){}
@@ -19,5 +18,4 @@ export class TestsPageComponent {
   popup(id: number){
     this.contactPopupService.openPopup(this.popupContainer, id)
   }
-
 }

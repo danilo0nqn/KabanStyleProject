@@ -44,7 +44,6 @@ export class HomePageComponent implements OnInit {
   {
     this.storedId = sessionStorage.getItem('userId');
     this.storedData = sessionStorage.getItem('userInfo');
-
     console.log(this.userInfo);
   }
 
@@ -60,6 +59,9 @@ export class HomePageComponent implements OnInit {
       this.imagenURL = '../../../assets/img/asd.png';
     } else {
       this.imagenURL = this.userInfo.avatar;
+    }
+    if(this.userInfo.status.length == 0){
+      this.userInfo.status = "Insert your status message here!"
     }
 
     this.assignmentsService.getAssignmentsByUser(this.userId).subscribe(

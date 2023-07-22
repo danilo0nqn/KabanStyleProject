@@ -103,6 +103,15 @@
           .task-details-owner{
             margin-left: 10px;
             margin-bottom: 10px;
+
+            .task-details-owner-button{
+              background-color: transparent;
+              border: none;
+            }
+            .task-details-owner-button:hover{
+              cursor: pointer;
+            }
+
           }
         }
 

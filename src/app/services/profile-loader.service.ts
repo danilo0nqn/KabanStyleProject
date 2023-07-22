@@ -11,32 +11,51 @@ import { Assignment } from '../models/assignment';
 })
 export class ProfileLoaderService {
   private observableReturned!: Observable<User>;
+  private userInfo!: any;
+  private projects!: any;
+  private assignments!: any;
 
   constructor(private http: HttpClient) {}
 
-  getUserInfo(id: number): Observable<User> {
-    this.observableReturned = this.http.get<User>(
-      `https://kanbanprojectapi.azurewebsites.net/api/Users/${id}`
-    );
-    return this.observableReturned;
+  loadUserInfo (id: number): void{
+    this.getUserInfo(id).subscribe(
+      (responseProfile) => {
+        sessionStorage.removeItem('userInfo')
+        this.userInfo = responseProfile;
+        console.log("user info cargados al session storage")
+      },
+      (error) =>{
+        console.error(`Ha habido un error al intentar cargar el usuario ${error}`);
+        sessionStorage.removeItem('token')
+      },
+      () => {
+        sessionStorage.setItem('userInfo', JSON.stringify(this.userInfo))
+        console.info('proceso de cargado de usuario a finalizado');
+      }
+    )
   }
   loadProjectsAssignments(id: number): void{
     this.getProjects(id).subscribe(
       (responseProjects) => {
-        sessionStorage.setItem('userProjects', JSON.stringify(responseProjects))
-        console.log(responseProjects);
+        sessionStorage.removeItem('userProjects')
+        this.projects = responseProjects
+        console.log('projectos cargados al sessionStorage')
       },
       (error) =>{
         console.error(`Ha habido un error al intentar cargar los projectos de usuario ${error}`);
         sessionStorage.removeItem('token')
         sessionStorage.removeItem('userInfo')
       },
-      () => console.info('proceso de cargado de projectos a finalizado')
+      () => {
+        console.info('proceso de cargado de projectos a finalizado');
+        sessionStorage.setItem('userProjects', JSON.stringify(this.projects))
+      }
     );
     this.getAssignments(id).subscribe(
       (responseAssignments) => {
-        sessionStorage.setItem('userAssignments', JSON.stringify(responseAssignments))
-        console.log(responseAssignments)
+        sessionStorage.removeItem('userAssignments')
+        this.assignments = responseAssignments
+        console.log('assignments cargados al sessionStorage')
       },
       (error) =>{
         console.error(`Ha habido un error al intentar las tareas del usuario ${error}`);
@@ -44,8 +63,15 @@ export class ProfileLoaderService {
         sessionStorage.removeItem('userInfo')
         sessionStorage.removeItem('userProjects')
       },
-      () => console.info('proceso de cargado de tareas a finalizado')
+      () => {
+        sessionStorage.setItem('userAssignments', JSON.stringify(this.assignments))
+        console.info('proceso de cargado de tareas a finalizado');
+      }
     );
+  }
+
+  getUserInfo(id: number): Observable<User> {
+    return this.http.get<User>(`https://kanbanprojectapi.azurewebsites.net/api/Users/${id}`);
   }
 
   getProjects(id: number): Observable<Project[]> {

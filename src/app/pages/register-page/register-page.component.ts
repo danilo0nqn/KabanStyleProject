@@ -26,7 +26,7 @@ export class RegisterPageComponent{
       },
       () => console.info('proceso de registracion finalizado')
       );
-    }
+  }
 }
 
 

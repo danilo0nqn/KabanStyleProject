@@ -1,6 +1,4 @@
 .newProject-content {
-  display: flex;
-  flex-direction: column;
   background: #555555;
   background: linear-gradient(
     90deg,
@@ -9,4 +7,18 @@
     rgb(56, 57, 133) 100%
   );
   min-height: 100%;
+  display: grid;
+  align-items: center;
+}
+
+.newProject_form{
+  justify-self: center;
+  position: relative;
+  border: 2px solid white;
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  width: fit-content;
+  padding: 30px;
+  background-color: #555555;
+  box-shadow: 2px 20px 20px black;
 }

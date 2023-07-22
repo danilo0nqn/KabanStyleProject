@@ -4,9 +4,12 @@
   </div>
   <div class="task-component-tasks">
     <ng-container *ngIf="pendingAssignments">
-      <div class="task-component-task" *ngFor="let item of pendingAssignments, let i = index">
+      <div class="task-component-task" *ngFor="let item of pendingAssignments , let i = index">
         <div class="task-name">
           {{pendingAssignments[i].name}}
+        </div>
+        <div class="task-description">
+          {{pendingAssignments[i].description}}
         </div>
         <div class="task-details-button">
           <div class="task-details">
@@ -20,7 +23,9 @@
             </div>
             <div class="task-details-owner">
               <img src="../../../../assets/img/owner.png" alt="">
-              <a [href]="pendingAssignments[i].projectId">{{pendingAssignments[i].createdBy}}</a>
+              <!-- <a [href]="pendingAssignments[i].projectId">{{pendingAssignments[i].createdBy}}</a> -->
+              <button [disabled]="!ownerOpen" class="task-details-owner-button" (click)="openPopup(pendingAssignments[i].beingDoneById, i)" >Owner</button>
+              <div numero=i  #popupContainer></div>
             </div>
           </div>
           <div class="task-button">

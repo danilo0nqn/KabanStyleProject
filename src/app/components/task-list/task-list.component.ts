@@ -13,6 +13,7 @@ export class TaskListComponent implements OnInit {
   storedProjects?: string | null ;
   userAssignments?: Assignment[];
   storedAssignments?: string | null;
+  noAssignments: boolean = false
 
   ngOnInit(): void {
     this.storedProjects = sessionStorage.getItem('userProjects');
@@ -22,6 +23,11 @@ export class TaskListComponent implements OnInit {
     }
     if (this.storedAssignments) {
       this.userAssignments = JSON.parse(this.storedAssignments);
+    }
+    if (this.storedAssignments?.length == 0){
+      this.noAssignments = true;
+    } else {
+      this.noAssignments = false;
     }
   }
 }
