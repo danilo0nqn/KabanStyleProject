@@ -8,7 +8,7 @@
       </mat-panel-title>
     </mat-expansion-panel-header>
     <ng-container *ngIf="userProjects;else noProjects">
-      <a *ngFor="let route of userProjects, let i = index" mat-list-item [routerLink]="['project']"> {{userProjects[i].name}}</a>
+      <a *ngFor="let route of userProjects, let i = index" mat-list-item [routerLink]="['project']" [queryParams]="{id: userProjects[i].id}"> {{userProjects[i].name}}</a>
     </ng-container>
     <ng-template #noProjects>
     </ng-template>
