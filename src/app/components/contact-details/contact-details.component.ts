@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 
 @Component({
   selector: 'app-contact-details',
@@ -7,9 +7,12 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class ContactDetailsComponent {
 
-  @Output() closePopup: EventEmitter<void> = new EventEmitter<void>();
+  @Output() closePopup: EventEmitter<number> = new EventEmitter<number>();
+  @Input() userId!:number
+  @Input() indexInOngoingTasks!: number
 
   onCloseButtonClick(): void {
-    this.closePopup.emit();
+    this.closePopup.emit(this.indexInOngoingTasks);
   }
+  
 }

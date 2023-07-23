@@ -5,7 +5,7 @@ export interface Project {
   description: string;
   id:          number;
   createdDate: string;
-  createdBy:   string;
-  updatedBy:   string;
+  createdBy:   number;
+  updatedBy:   number;
   updatedAt:   string;
 }

@@ -10,5 +10,15 @@ import { Assignment } from 'src/app/models/assignment';
 export class OngoingTasksComponent {
 
   @Input() ongoingAssignments!: Assignment[]
+  showContactDetailsMap: { [key: number]: boolean } = {};
+  indexInOngoingTasks!: number
+
+  showContactDetail(index: number){
+    this.showContactDetailsMap[index] = true;
+  }
+
+  closeContactDetail(index:number){
+    this.showContactDetailsMap[index] = false;
+  }
   
 }

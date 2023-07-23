@@ -1,32 +1,31 @@
 import { Injectable, ViewContainerRef, ComponentRef, Component } from '@angular/core';
-import { AssignmentComponent } from '../components/assignment/assignment.component';
 import { BehaviorSubject } from 'rxjs';
+import { ContactDetailsThroughPopupComponent } from '../components/contact-details-through-popup/contact-details-through-popup.component';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContactPopupService {
-  private assignmentComponent!: ComponentRef<AssignmentComponent>
+  private contactDetailsComponent!: ComponentRef<ContactDetailsThroughPopupComponent>
   private openButtonShow$ = new BehaviorSubject<boolean>(true);
   openButtonShowStatus$ = this.openButtonShow$.asObservable();
   
   constructor() { }
 
   openPopup(container: ViewContainerRef, id:number) {
-    this.assignmentComponent = container.createComponent(AssignmentComponent);
-    this.assignmentComponent.instance.userId = id;
-    this.assignmentComponent.instance.ownerOpen = false;
+    this.contactDetailsComponent = container.createComponent(ContactDetailsThroughPopupComponent);
+    this.contactDetailsComponent.instance.userId = id;
+    this.contactDetailsComponent.instance.ownerOpen = false;
     this.setOpenButtonShowStatus(false)
-    console.log("En el servicio, le mando false al ownerOpen del assignment component")
-    this.assignmentComponent.instance.closePopup.subscribe(() => {
+    this.contactDetailsComponent.instance.closePopup.subscribe(() => {
       this.destroyPopup();
     });
   }
 
   destroyPopup(): void {
-    if (this.assignmentComponent) {
-      this.assignmentComponent.destroy();
+    if (this.contactDetailsComponent) {
+      this.contactDetailsComponent.destroy();
     }
   }
 

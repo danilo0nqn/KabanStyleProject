@@ -7,6 +7,15 @@ import { Assignment } from 'src/app/models/assignment';
   styleUrls: ['./for-review-tasks.component.scss']
 })
 export class ForReviewTasksComponent {
-  /* TODO: Cuadno cargo una tarea, guardar el ID del owner para la ventana popup */
   @Input() forReviewAssignments!: Assignment[]
+  showContactDetailsMap: { [key: number]: boolean } = {};
+  indexInOngoingTasks!: number
+
+  showContactDetail(index: number){
+    this.showContactDetailsMap[index] = true;
+  }
+
+  closeContactDetail(index:number){
+    this.showContactDetailsMap[index] = false;
+  }
 }

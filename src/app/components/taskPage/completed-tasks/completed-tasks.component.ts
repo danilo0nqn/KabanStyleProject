@@ -7,6 +7,16 @@ import { Assignment } from 'src/app/models/assignment';
   styleUrls: ['./completed-tasks.component.scss']
 })
 export class CompletedTasksComponent {
-  /* TODO: Cuadno cargo una tarea, guardar el ID del owner para la ventana popup */
+  
   @Input() completedAssignments!: Assignment[]
+  showContactDetailsMap: { [key: number]: boolean } = {};
+  indexInOngoingTasks!: number
+
+  showContactDetail(index: number){
+    this.showContactDetailsMap[index] = true;
+  }
+
+  closeContactDetail(index:number){
+    this.showContactDetailsMap[index] = false;
+  }
 }

@@ -8,7 +8,6 @@ import {
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { ProfileLoaderService } from 'src/app/services/profile-loader.service';
-import { AssignmentsByUserService } from 'src/app/services/assignments-by-user.service';
 import { Assignment } from 'src/app/models/assignment';
 import { ChangeStatusService } from 'src/app/services/change-status.service';
 
@@ -28,23 +27,20 @@ export class HomePageComponent implements OnInit {
   imagenURL!: string;
   assignments!: Assignment[];
   welcomeMessage!: string;
+  storedAssignments: string | null;
 
-  //Agregue esto para poder guardar el h2 editable en el estado del usuario
-  @ViewChild('userPersonalStatusElement') userPersonalStatusElement:
-    | ElementRef
-    | undefined;
+  @ViewChild('userPersonalStatusElement') userPersonalStatusElement!: ElementRef 
 
   constructor(
     private route: ActivatedRoute,
     private profileLoader: ProfileLoaderService,
     private changeDetectorRef: ChangeDetectorRef,
-    private assignmentsService: AssignmentsByUserService,
     private statusChanger: ChangeStatusService
   ) 
   {
     this.storedId = sessionStorage.getItem('userId');
     this.storedData = sessionStorage.getItem('userInfo');
-    console.log(this.userInfo);
+    this.storedAssignments = sessionStorage.getItem('userAssignments');
   }
 
   ngOnInit(): void {
@@ -53,6 +49,15 @@ export class HomePageComponent implements OnInit {
     }
     if (this.storedData != null) {
       this.userInfo = JSON.parse(this.storedData);
+    }
+    if (this.storedAssignments != null) {
+      this.assignments = JSON.parse(this.storedAssignments);
+      if( this.assignments.length == 0) {
+        this.welcomeMessage = 'You have no task assigned to do, you should go to your projects and take a assignment!'
+      }else {
+        this.welcomeMessage =
+        'You have ' + this.assignments.length + ' tasks to do (' + this.assignments.filter((urgent) => urgent.priority === 4).length + ' urgents!)';
+      }
     }
     if (this.userInfo.avatar == null || this.userInfo.avatar == '') {
       this.imagenURL = this.userInfo.avatar;
@@ -63,23 +68,6 @@ export class HomePageComponent implements OnInit {
     if(this.userInfo.status.length == 0){
       this.userInfo.status = "Insert your status message here!"
     }
-
-    this.assignmentsService.getAssignmentsByUser(this.userId).subscribe(
-      (responseAssignments) => {
-        this.assignments = responseAssignments;
-        console.log(this.assignments);
-        this.welcomeMessage =
-          'You have ' + this.assignments.length + ' tasks to do (' + this.assignments.filter((urgent) => urgent.priority === 4).length + ' urgents!)';
-        console.log(this.welcomeMessage);
-      },
-      (error) => {
-        console.error(
-          `Ha habido un error al intentar las tareas del usuario ${error}`
-        );
-      },
-      () => console.info('proceso de cargado de tareas a finalizado')
-    );
-    console.log(this.userInfo);
   }
 
   changePersonalStatus() {
@@ -99,6 +87,5 @@ export class HomePageComponent implements OnInit {
     )
     this.canChangePersonalStatus = !this.canChangePersonalStatus;
     this.loading = !this.loading;
-
   }
 }

@@ -131,7 +131,16 @@
 }
 
 .app-task-list{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
   width: 100%;
+
+  .app-task-list-title{
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 @media (max-width: 1100px) {

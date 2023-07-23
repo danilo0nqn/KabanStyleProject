@@ -11,7 +11,7 @@ export interface Assignment {
   createdDate:   string;
   descriptionURL: string;
   designURL:     string;
-  createdBy:     string;
-  updatedBy:     string;
+  createdBy:     number;
+  updatedBy:     number;
   updatedAt:     string;
 }

@@ -20,7 +20,10 @@
             </div>
             <div class="task-details-owner">
               <img src="../../../../assets/img/owner.png" alt="">
-              <a [href]="">{{ongoingAssignments[i].beingDoneById}}</a>
+              <button (click)="(showContactDetail(i))">Owner</button>
+              <div *ngIf="showContactDetailsMap[i]">
+                <app-contact-details [userId]="ongoingAssignments[i].beingDoneById" [indexInOngoingTasks]="i" (closePopup)="closeContactDetail($event)"></app-contact-details>
+              </div>
             </div>
           </div>
           <div class="task-button">

@@ -24,7 +24,7 @@ export class TaskListComponent implements OnInit {
     if (this.storedAssignments) {
       this.userAssignments = JSON.parse(this.storedAssignments);
     }
-    if (this.storedAssignments?.length == 0){
+    if (this.storedAssignments?.length == 0 && this.storedProjects?.length == 0){
       this.noAssignments = true;
     } else {
       this.noAssignments = false;
