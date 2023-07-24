@@ -20,6 +20,11 @@ export class ForReviewTasksComponent {
     if(this.storedId){
       this.userId = parseInt(this.storedId, 10)
     }
+
+    /* CHANGE TO FALSE WHEN CONTACT DETAILSE IS OVER */
+    this.showContactDetailsMap[0] = true;
+
+
   }
 
   showContactDetail(index: number){

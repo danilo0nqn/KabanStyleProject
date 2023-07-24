@@ -16,7 +16,8 @@
     padding: 30px;
     position: fixed;
     min-height: fit-content;
-    width: 400px;
+    width: 50vw;
+    max-width: 500px;
     top: 0;
     bottom: 0;
     left: 0;
@@ -50,13 +51,10 @@
       margin-bottom: 15px;
     }
 
-    .newProject_box-input {
-      grid-template-columns: max-content 1fr;
-      align-items: center;
-      column-gap: 0.75rem;
-
-      .newAssignment_list{
+    .newAssignment_list{
+      .newAssignment_list-IfMobileQuery{
         display: flex;
+        gap: 5px;
         .newAssignment-box-input-priority-title{
           margin: 10px 5px 10px 0;
           color: rgb(228, 228, 228);
@@ -84,6 +82,13 @@
           border: 1px solid rgb(104, 104, 104);
         }
       }
+      
+    }
+
+    .newProject_box-input {
+      grid-template-columns: max-content 1fr;
+      align-items: center;
+      column-gap: 0.75rem;
 
       .newProject_input {
         width: 100%;
@@ -125,6 +130,47 @@
       background-color: #03bfbc;
       color: #231e39;
       transition: 0.5s;
+    }
+  }
+}
+
+@media(max-width: 750px) {
+  .newAssignment_content{
+    min-width: 250px;
+
+    .newAssignment_list{
+      width: 100%;
+      .newAssignment_list-IfMobileQuery{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        button{
+          background-color: transparent;
+          border: none;
+          margin: auto;
+          width: 100%;
+          margin-right: auto;
+          text-align: start;
+        }
+        .newAssignment-box-input-priority-title{
+          margin-right: auto;
+        }
+        .newAssignment_list-PriorityList{
+          position: absolute;
+          z-index: 3;
+          display: flex;
+          gap: 5px;
+          flex-direction: column;
+          transition: 300ms;
+          width: 85%;
+          label{
+            border: 0.5px solid rgb(46, 45, 45);
+            width: 100%;
+            background-color: #363636;
+          }
+        }
+      }
+      
     }
   }
 }

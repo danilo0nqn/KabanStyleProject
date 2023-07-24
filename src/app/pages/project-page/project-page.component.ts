@@ -68,5 +68,10 @@ export class ProjectPageComponent implements OnInit{
     this.changeInAssignments();
     this.newAssignmentPopup = false;
   }
+  deleteProject(){
 
+  }
+  addUserToProject(){
+    
+  }
 }

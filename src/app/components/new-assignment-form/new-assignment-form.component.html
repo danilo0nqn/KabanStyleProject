@@ -26,8 +26,28 @@
           </div>
         </div>
       </div>
-        <div class="newAssignment_list">
-            <div class="newAssignment-box-input-priority-title ">Priority</div>
+      <div class="newAssignment_list">
+        <div *ngIf="!mobileQuery.matches" class="newAssignment_list-IfMobileQuery">
+          <div class="newAssignment-box-input-priority-title">Priority</div>
+          <input type="radio" id="unknown" formControlName="priority" value=0>
+          <label for="unknown">Unknown</label>
+          <input type="radio" id="minor" formControlName="priority" value=1>
+          <label for="minor">Minor</label>
+          <input type="radio" id="medium" formControlName="priority" value=2>
+          <label for="medium">Medium</label>
+          <input type="radio" id="major" formControlName="priority" value=3>
+          <label for="major">Major</label>
+          <input type="radio" id="urgent" formControlName="priority" value=4>
+          <label for="urgent">Urgent</label>
+        </div>
+        <div *ngIf="mobileQuery.matches" class="newAssignment_list-IfMobileQuery">
+          <button (click)="changeShowPriorityList()" class="newAssignment-box-input-priority-title">
+            Priority
+            <ng-container *ngIf="!showPriorityList">˅</ng-container>
+            <ng-container *ngIf="showPriorityList">˄</ng-container>
+          </button>
+          <div *ngIf="true" class="newAssignment_list-PriorityList" 
+                                    [ngStyle]="{'transform': showPriorityList ? 'rotateX(0deg) translateY(40px)' : 'rotateX(90deg) translateY(-150px)'}">
             <input type="radio" id="unknown" formControlName="priority" value=0>
             <label for="unknown">Unknown</label>
             <input type="radio" id="minor" formControlName="priority" value=1>
@@ -38,7 +58,9 @@
             <label for="major">Major</label>
             <input type="radio" id="urgent" formControlName="priority" value=4>
             <label for="urgent">Urgent</label>
+          </div>
         </div>
+      </div>
       <div class="newProject_box-input">
         <div>
           <input placeholder="document URL" formControlName="descriptionURL" class="newProject_input">
