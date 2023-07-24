@@ -29,7 +29,13 @@
             </div>
           </div>
           <div class="task-button">
-            <button>Take Task</button>
+            <button (click)="takeAssignment(
+                              pendingAssignments[i].id, 
+                              pendingAssignments[i].projectId,
+                              pendingAssignments[i].stage
+                              )">
+              Take Task
+            </button>
           </div>
         </div>
       </div>

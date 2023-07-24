@@ -20,7 +20,8 @@ export class ProjectPageComponent implements OnInit{
   completedAssignments!: Assignment[];
   userProjects!: Project[];
   userProject?: Project;
-  storedProjects?: string | null ;
+  storedProjects?: string | null;
+  newAssignmentPopup: boolean = false;
 
   constructor( private route: ActivatedRoute, private assignmentsByProjectService : GetAssignmentsByProjectService ){
     this.route.queryParams.subscribe((params: any) =>
@@ -29,22 +30,6 @@ export class ProjectPageComponent implements OnInit{
       this.projectId = params.id
       this.reloadAssignments();
     })
-
-
-    this.assignmentsByProjectService.getAssignmentsByUser(this.projectId).subscribe(
-      (responseProfile) => {
-        this.assignments = responseProfile
-        console.log(this.assignments)
-        this.pendingAssignments = this.assignments.filter(a => a.stage === 0);
-        this.ongoingAssignments = this.assignments.filter(a => a.stage === 1);
-        this.forReviewAssignments = this.assignments.filter(a => a.stage === 2);
-        this.completedAssignments = this.assignments.filter(a => a.stage === 3);
-      },
-      (error) =>{
-        console.error(`Ha habido un error al intentar cargar las tareas del proyecto con id: ${this.projectId}. Error: ${error}`);
-      },
-      () => console.info('proceso de cargado de tareas de este pryjecto a finalizado')
-    );
   }
 
   ngOnInit(): void {
@@ -55,7 +40,7 @@ export class ProjectPageComponent implements OnInit{
     this.userProject = this.userProjects.find((p => p.id = this.projectId))
   }
 
-  private reloadAssignments(): void {
+  reloadAssignments(): void {
     this.assignmentsByProjectService.getAssignmentsByUser(this.projectId).subscribe(
       (responseProfile) => {
         this.assignments = responseProfile
@@ -70,7 +55,18 @@ export class ProjectPageComponent implements OnInit{
       },
       () => console.info('proceso de cargado de tareas de este pryjecto a finalizado')
     );
-    this.userProject = this.userProjects.find((p => p.id = this.projectId))
+  }
+
+  changeInAssignments(){
+    this.reloadAssignments();
+  }
+  openNewAssignmentPopup(){
+    this.newAssignmentPopup = true;
+  }
+
+  closeNewAssignmentPopup(){
+    this.changeInAssignments();
+    this.newAssignmentPopup = false;
   }
 
 }

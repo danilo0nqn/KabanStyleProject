@@ -31,14 +31,13 @@ export class NewProjectComponent implements OnInit{
     this.newProjectService.newProject(value).subscribe(
       (response) => {
         console.log("Projecto creado correctamente!")
-        this.profileLoader.loadProjectsAssignments(this.id)
-        this.profileLoader.loadProjectsAssignments(this.id)
       },
       (error) => {
         console.error(`Ha habido un error al intentar crear el projecto ${error}`);
       },
       () => {
         console.info('proceso de creacion de projecto ha finalizado');
+        this.profileLoader.loadProjectsAssignments(this.id)
         this.router.navigate(['home']);
         /* TODO: Idealmente, deberia ir al projecto, peor no se como devolver el id correcto dle projecto nuevo para pasarlo por queryparamas con navigate */
         /* let navigationExtras: NavigationExtras = {

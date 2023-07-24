@@ -30,13 +30,13 @@ import { ContactDetailsComponent } from './components/contact-details/contact-de
 import { TestsPageComponent } from './pages/tests-page/tests-page.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { PopupTestComponent } from './components/popup-test/popup-test.component';
-import { AssignmentComponent } from './components/assignment/assignment.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 import { FilterAssignmentsPipe } from './pipes/filter-assignments.pipe';
 import { NewProjectComponent } from './pages/new-project/new-project.component';
 import { NewProjectFormComponent } from './components/new-project-form/new-project-form.component';
 import { ContactDetailsThroughPopupComponent } from './components/contact-details-through-popup/contact-details-through-popup.component';
+import { NewAssignmentFormComponent } from './components/new-assignment-form/new-assignment-form.component';
 
 
 @NgModule({
@@ -61,13 +61,13 @@ import { ContactDetailsThroughPopupComponent } from './components/contact-detail
     TestsPageComponent,
     NotFoundPageComponent,
     PopupTestComponent,
-    AssignmentComponent,
     RegisterPageComponent,
     RegisterFormComponent,
     FilterAssignmentsPipe,
     NewProjectComponent,
     NewProjectFormComponent,
-    ContactDetailsThroughPopupComponent
+    ContactDetailsThroughPopupComponent,
+    NewAssignmentFormComponent
   ],
   imports: [
     BrowserModule,

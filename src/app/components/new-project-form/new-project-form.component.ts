@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, Form } from '@angular/forms'
 import { User } from 'src/app/models/user';
 import { Project } from 'src/app/models/project';

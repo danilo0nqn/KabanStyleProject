@@ -9,14 +9,15 @@ export class AssignmentsManagementService {
 
   constructor(private http: HttpClient) { }
 
-  assignmentManagement(data: number[]): Observable<any> {
+  assignmentManagement(data: any[]): Observable<any>{
     let [userId, projectId, id, beingDoneById, stage] = data;
     let body = {
       id,
       beingDoneById,
       stage
     };
-    return this.http.put(`https://localhost:7047/api/Assignments/AssignmentManagement?projectId=${projectId}&userId=${userId}`, body)  
+    console.log(body)
+    return this.http.put(`https://kanbanprojectapi.azurewebsites.net/api/Assignments/AssignmentManagement?projectId=${projectId}&userId=${userId}`, body)
   }
 
 }

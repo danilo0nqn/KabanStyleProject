@@ -10,7 +10,7 @@ export class CompletedTasksComponent {
   
   @Input() completedAssignments!: Assignment[]
   showContactDetailsMap: { [key: number]: boolean } = {};
-  indexInOngoingTasks!: number
+  indexInTasks!: number
 
   showContactDetail(index: number){
     this.showContactDetailsMap[index] = true;

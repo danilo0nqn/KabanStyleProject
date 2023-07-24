@@ -1,0 +1,58 @@
+<div class="newAssignment">
+  <div class="newAssignment_content">
+    <form [formGroup]="newAssignmentForm" (submit)="submitNewAssignmentForm()">
+      <button (click)="closeNewAssignmentPopup()" class="newAssignment_close_button">X</button>
+      <div class="newProject_title">
+        <h1>New Assignment</h1>
+        <h6>Campos con * son obligatorios</h6>
+      </div>
+      <div class="newProject_box-input">
+        <div>
+          <input placeholder="Name*" formControlName="name" class="newProject_input">
+        </div>
+        <div>
+          <div *ngIf="name?.errors?.['required'] && name?.touched" class="required_label">
+            El campo del nombre es obligatorio
+          </div>
+        </div>
+      </div>
+      <div class="newProject_box-input">
+        <div >
+          <input placeholder="Description*" formControlName="description" class="newProject_input">
+        </div>
+        <div>
+          <div *ngIf="description?.errors?.['required'] && description?.touched" class="required_label">
+            El campo de descripcion es obligatorio
+          </div>
+        </div>
+      </div>
+        <div class="newAssignment_list">
+            <div class="newAssignment-box-input-priority-title ">Priority</div>
+            <input type="radio" id="unknown" formControlName="priority" value=0>
+            <label for="unknown">Unknown</label>
+            <input type="radio" id="minor" formControlName="priority" value=1>
+            <label for="minor">Minor</label>
+            <input type="radio" id="medium" formControlName="priority" value=2>
+            <label for="medium">Medium</label>
+            <input type="radio" id="major" formControlName="priority" value=3>
+            <label for="major">Major</label>
+            <input type="radio" id="urgent" formControlName="priority" value=4>
+            <label for="urgent">Urgent</label>
+        </div>
+      <div class="newProject_box-input">
+        <div>
+          <input placeholder="document URL" formControlName="descriptionURL" class="newProject_input">
+        </div>
+      </div>
+      <div class="newProject_box-input">
+        <div>
+          <input placeholder="design URL" formControlName="designURL" class="newProject_input">
+        </div>
+      </div>
+      <h4 class="error-found" *ngIf="errorInNewAssignment"> {{errorInNewAssignment}} </h4>
+      <div>
+        <button type="submit" [disabled]="!newAssignmentForm.valid" class="submit_button">Create new assignment!</button>
+      </div>
+    </form>
+  </div>
+</div>

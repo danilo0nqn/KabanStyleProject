@@ -1,7 +1,8 @@
 <div class="project-page">
   <div class="project-title-and-new-assignment">
     <div class="new-assignment">
-      <button class="button">Add assignment</button>
+      <button class="button" (click)="openNewAssignmentPopup()">Add assignment</button>
+      <app-new-assignment-form *ngIf="newAssignmentPopup" [projectId]="projectId" (reloadAssignmentsAndClosePopup)="closeNewAssignmentPopup()" (closePopup)="closeNewAssignmentPopup()"></app-new-assignment-form>
     </div>
     <div class="project-title">
       {{userProject?.name}}
@@ -9,16 +10,16 @@
   </div>
   <div class="project-tasks">
     <div class="pending-tasks">
-      <app-pending-tasks [pendingAssignments]="pendingAssignments"></app-pending-tasks>
+      <app-pending-tasks [pendingAssignments]="pendingAssignments" (reloadAssignments)="changeInAssignments()"></app-pending-tasks>
     </div>
     <div class="ongoing-tasks">
-      <app-ongoing-tasks [ongoingAssignments]="ongoingAssignments" ></app-ongoing-tasks>
+      <app-ongoing-tasks [ongoingAssignments]="ongoingAssignments" (reloadAssignments)="changeInAssignments()"></app-ongoing-tasks>
     </div>
     <div class="for-review-tasks">
-      <app-for-review-tasks [forReviewAssignments]="forReviewAssignments"></app-for-review-tasks>
+      <app-for-review-tasks [forReviewAssignments]="forReviewAssignments" (reloadAssignments)="changeInAssignments()"></app-for-review-tasks>
     </div>
     <div class="completed-tasks">
-      <app-completed-tasks [completedAssignments]="completedAssignments" ></app-completed-tasks>
+      <app-completed-tasks [completedAssignments]="completedAssignments" (reloadAssignments)="changeInAssignments()"></app-completed-tasks>
     </div>
   </div>
 </div>

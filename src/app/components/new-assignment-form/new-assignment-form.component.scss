@@ -1,0 +1,130 @@
+.newAssignment{
+  width: 100%;
+  min-height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+  position: fixed;
+  top: 64px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  .newAssignment_content{
+    border: 2px solid white;
+    border-radius: 20px;
+    backdrop-filter: blur(8px);
+    box-shadow: 2px 20px 20px black;
+    padding: 30px;
+    position: fixed;
+    min-height: fit-content;
+    width: 400px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    background-color: #454545;
+    display: grid;
+
+    .newAssignment_close_button{
+      margin: auto 0 auto auto;
+      display: block;
+      background-color: #363636;
+      color: #03bfbc;
+      border: 1px solid #03bfbc;
+      border-radius: 3px;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    .newAssignment_close_button:hover{
+      background-color: #03bfbc;
+      color: #231e39;
+      transition: 0.5s;
+    }
+
+    .newProject_title{
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .newProject_box-input {
+      grid-template-columns: max-content 1fr;
+      align-items: center;
+      column-gap: 0.75rem;
+
+      .newAssignment_list{
+        display: flex;
+        .newAssignment-box-input-priority-title{
+          margin: 10px 5px 10px 0;
+          color: rgb(228, 228, 228);
+          text-shadow: 1px 1px 0.5px red
+        }
+        input[type="radio"]{
+          position: absolute;
+          opacity: 0;
+        }
+        label{
+          padding: 5px 0 5px 5px;
+          width: 60px;
+          text-align: center;
+          margin: auto;
+        }
+        
+        input[type="radio"]:hover + label,
+        input[type="radio"]:checked + label,
+        input[type="radio"]:focus + label{
+          background-color: #363636;
+          box-shadow: 1px 1px 1px black;
+          
+        }
+        input[type="radio"]:checked + label{
+          border: 1px solid rgb(104, 104, 104);
+        }
+      }
+
+      .newProject_input {
+        width: 100%;
+        padding-block: 0.8rem;
+        background: none;
+        color: white;
+        position: relative;
+        z-index: 1;
+        border: none;
+        border-bottom: 2px solid white;
+        margin-bottom: 20px;
+      }
+
+      .newProject_input::placeholder {
+        color: rgb(228, 228, 228);
+        text-shadow: 1px 1px 0.5px red
+      }
+
+      .error-found{
+        color: rgb(79, 166, 216);
+        text-shadow: 1px 2px 0.5px black;
+        text-align: center;
+      }
+    }
+    
+    .submit_button {
+      margin: auto;
+      display: block;
+      background-color: #363636;
+      color: #03bfbc;
+      border: 1px solid #03bfbc;
+      border-radius: 3px;
+      cursor: pointer;
+      padding: 10px 25px;
+      margin-left: auto;
+    }
+  
+    .submit_button:hover {
+      background-color: #03bfbc;
+      color: #231e39;
+      transition: 0.5s;
+    }
+  }
+}

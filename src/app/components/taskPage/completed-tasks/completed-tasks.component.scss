@@ -103,10 +103,19 @@
           .task-details-owner{
             margin-left: 10px;
             margin-bottom: 10px;
+            button{
+              background-color: transparent;
+              border: none;
+              color: #FFF;
+            }
+            button:hover{
+              cursor: pointer;
+            }
           }
         }
 
         .task-reviewed{
+          margin: auto 10px 10px 0;
           color: #FFF;
           font-family: SF Pro Text;
           font-size: 14px;
@@ -114,6 +123,15 @@
           font-weight: 400;
           line-height: normal;
           margin-right: 15px;
+
+          button{
+            background-color: transparent;
+            border: none;
+            color: #FFF;
+          }
+          button:hover{
+            cursor: pointer;
+          }
         }
       }
     } 

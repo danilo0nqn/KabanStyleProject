@@ -9,10 +9,10 @@ export class ContactDetailsComponent {
 
   @Output() closePopup: EventEmitter<number> = new EventEmitter<number>();
   @Input() userId!:number
-  @Input() indexInOngoingTasks!: number
+  @Input() indexInTasks!: number
 
   onCloseButtonClick(): void {
-    this.closePopup.emit(this.indexInOngoingTasks);
+    this.closePopup.emit(this.indexInTasks);
   }
   
 }

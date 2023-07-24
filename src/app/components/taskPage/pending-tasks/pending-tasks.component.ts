@@ -1,7 +1,7 @@
-import { Component, Input, ViewChild, ViewContainerRef, ComponentRef, QueryList, ViewChildren, OnInit } from '@angular/core';
+import { Component, Input, ViewContainerRef, QueryList, ViewChildren, OnInit, Output, EventEmitter } from '@angular/core';
 import { Assignment } from 'src/app/models/assignment';
 import { ContactPopupService } from 'src/app/services/contact-popup.service';
-import { trigger, transition, style, animate } from '@angular/animations';
+import { AssignmentsManagementService } from 'src/app/services/assignments-management.service';
 
 @Component({
   selector: 'app-pending-tasks',
@@ -11,9 +11,16 @@ import { trigger, transition, style, animate } from '@angular/animations';
 export class PendingTasksComponent implements OnInit{
   @ViewChildren('popupContainer', { read: ViewContainerRef}) public popupContainers!: QueryList<ViewContainerRef>;
   @Input() pendingAssignments!: Assignment[]
+  @Output() reloadAssignments: EventEmitter<void> = new EventEmitter<void>();
   ownerOpen:boolean = true;
+  userId!: number;
+  storedId!: string | null; 
 
-  constructor(private contactPopupService: ContactPopupService){
+  constructor(private contactPopupService: ContactPopupService, private assignmentManagment: AssignmentsManagementService){
+    this.storedId = sessionStorage.getItem('userId')
+    if (this.storedId){
+      this.userId = parseInt(this.storedId, 10);
+    }
   }
 
   ngOnInit(): void {
@@ -30,9 +37,14 @@ export class PendingTasksComponent implements OnInit{
     }
   }
 
-/* TERMINAR LOS BOTONES DE TAKE TASK Y SEND BACK TO ONGOING */
-  /* ARREGLAR EL CONTACT DETAILS */
-  /* ARRELGAR HACER NEW ASSIGNMENT */
-  /* AGREGAR DELETE PROJECT */
-  /* AGREGAR EDITAR CONTACTO EN HOME PAGE */
+  takeAssignment(id: number, projectId: number, stage: number){
+    stage ++;
+    let beingDoneById = this.userId;
+    let data = [this.userId, projectId, id, beingDoneById, stage]
+    this.assignmentManagment.assignmentManagement(data).subscribe(
+      (response) => {},
+      (error) => {console.log(`take task not ok ${error}`)},
+      () => {this.reloadAssignments.emit();}
+    )
+  }
 }

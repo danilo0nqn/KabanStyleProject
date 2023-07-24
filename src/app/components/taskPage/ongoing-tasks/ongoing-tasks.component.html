@@ -8,6 +8,9 @@
         <div class="task-name">
           {{ongoingAssignments[i].name}}
         </div>
+        <div class="task-description">
+          {{ongoingAssignments[i].description}}
+        </div>
         <div class="task-details-button">
           <div class="task-details">
             <div class="task-details-doc">
@@ -22,13 +25,26 @@
               <img src="../../../../assets/img/owner.png" alt="">
               <button (click)="(showContactDetail(i))">Owner</button>
               <div *ngIf="showContactDetailsMap[i]">
-                <app-contact-details [userId]="ongoingAssignments[i].beingDoneById" [indexInOngoingTasks]="i" (closePopup)="closeContactDetail($event)"></app-contact-details>
+                <app-contact-details [userId]="ongoingAssignments[i].beingDoneById" [indexInTasks]="i" (closePopup)="closeContactDetail($event)"></app-contact-details>
               </div>
             </div>
           </div>
           <div class="task-button">
-            <button>Leave Task</button>
-            <button>Send to Review</button>
+            <button (click)="leaveTask(
+                              ongoingAssignments[i].id, 
+                              ongoingAssignments[i].projectId,
+                              ongoingAssignments[i].stage
+                            )">
+              Leave Task
+            </button>
+            <button (click)="sendToReview(
+                              ongoingAssignments[i].id, 
+                              ongoingAssignments[i].projectId,
+                              ongoingAssignments[i].stage,
+                              ongoingAssignments[i].beingDoneById
+                            )">
+              Send to Review
+            </button>
           </div>
         </div>
       </div>

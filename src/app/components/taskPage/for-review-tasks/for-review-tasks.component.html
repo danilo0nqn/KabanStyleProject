@@ -8,6 +8,9 @@
         <div class="task-name">
           {{forReviewAssignments[i].name}}
         </div>
+        <div class="task-description">
+          {{forReviewAssignments[i].description}}
+        </div>
         <div class="task-details-button">
           <div class="task-details">
             <div class="task-details-doc">
@@ -22,15 +25,29 @@
               <img src="../../../../assets/img/owner.png" alt="">
               <button (click)="(showContactDetail(i))">Owner</button>
               <div *ngIf="showContactDetailsMap[i]">
-                <app-contact-details [userId]="forReviewAssignments[i].beingDoneById" [indexInOngoingTasks]="i" (closePopup)="closeContactDetail($event)">
+                <app-contact-details [userId]="forReviewAssignments[i].beingDoneById" [indexInTasks]="i" (closePopup)="closeContactDetail($event)">
                   
                 </app-contact-details>
               </div>
             </div>
           </div>
           <div class="task-button">
-            <button>Resend to Ongoing</button>
-            <button>Send to Completed</button>
+            <button (click)="resendToOngoing(
+                              forReviewAssignments[i].id, 
+                              forReviewAssignments[i].projectId,
+                              forReviewAssignments[i].stage,
+                              forReviewAssignments[i].beingDoneById
+                            )">
+              Resend to Ongoing
+            </button>
+            <button (click)="sendToCompleted(
+                              forReviewAssignments[i].id, 
+                              forReviewAssignments[i].projectId,
+                              forReviewAssignments[i].stage,
+                              forReviewAssignments[i].beingDoneById
+                            )">
+              Send to Completed
+            </button>
           </div>
         </div>
       </div>

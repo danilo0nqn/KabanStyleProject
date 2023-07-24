@@ -89,3 +89,9 @@ export class HomePageComponent implements OnInit {
     this.loading = !this.loading;
   }
 }
+
+
+/* ARREGLAR EL CONTACT DETAILS */
+/* ARRELGAR HACER NEW ASSIGNMENT */
+/* AGREGAR DELETE PROJECT */
+/* AGREGAR EDITAR CONTACTO EN HOME PAGE */
