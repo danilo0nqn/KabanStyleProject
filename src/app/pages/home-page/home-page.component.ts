@@ -28,6 +28,7 @@ export class HomePageComponent implements OnInit {
   assignments!: Assignment[];
   welcomeMessage!: string;
   storedAssignments: string | null;
+  editProfile:boolean = false
 
   @ViewChild('userPersonalStatusElement') userPersonalStatusElement!: ElementRef 
 
@@ -88,10 +89,16 @@ export class HomePageComponent implements OnInit {
     this.canChangePersonalStatus = !this.canChangePersonalStatus;
     this.loading = !this.loading;
   }
+
+  openEditProfilePopup(){
+    this.editProfile = true
+  }
+
+  closeEditProfilePopup(i: number){
+    this.editProfile = false
+  }
 }
 
 
-/* ARREGLAR EL CONTACT DETAILS */
 /* AGREGAR METODO DELETE PROJECT */
 /* AGREGAR METODO ADD USER TO PROJECT */
-/* AGREGAR EDITAR CONTACTO EN HOME PAGE */

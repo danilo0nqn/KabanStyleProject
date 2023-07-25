@@ -25,7 +25,7 @@
               <img src="../../../../assets/img/owner.png" alt="">
               <button (click)="(showContactDetail(i))">Owner</button>
               <div *ngIf="showContactDetailsMap[i]">
-                <app-contact-details [userId]="ongoingAssignments[i].beingDoneById" [indexInTasks]="i" (closePopup)="closeContactDetail($event)"></app-contact-details>
+                <app-contact-details [contactId]="ongoingAssignments[i].beingDoneById" [indexInTasks]="i" (closePopup)="closeContactDetail($event)"></app-contact-details>
               </div>
             </div>
           </div>
@@ -49,7 +49,7 @@
         </div>
       </div>
     </ng-container>
-    <ng-container *ngIf="ongoingAssignments.length === 0">
+    <ng-container *ngIf="ongoingAssignments && ongoingAssignments.length === 0">
       No ongoing tasks!
     </ng-container>
   </div>

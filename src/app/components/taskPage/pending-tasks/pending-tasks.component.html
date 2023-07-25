@@ -40,7 +40,7 @@
         </div>
       </div>
     </ng-container>
-    <ng-container *ngIf="pendingAssignments.length == 0">
+    <ng-container *ngIf="pendingAssignments && pendingAssignments.length == 0">
       No pending tasks!
     </ng-container>
   </div>

@@ -22,7 +22,7 @@
               <img src="../../../../assets/img/owner.png" alt="">
               <button (click)="(showContactDetail(i))">Owner</button>
               <div *ngIf="showContactDetailsMap[i]">
-                <app-contact-details [userId]="completedAssignments[i].beingDoneById" [indexInTasks]="i" (closePopup)="closeContactDetail($event)">
+                <app-contact-details [contactId]="completedAssignments[i].beingDoneById" [indexInTasks]="i" (closePopup)="closeContactDetail($event)">
                   
                 </app-contact-details>
               </div>
@@ -32,7 +32,7 @@
             <img src="../../../../assets/img/owner.png" alt="">
             <button (click)="(showContactDetail(i))">Reviewer</button>
               <div *ngIf="showContactDetailsMap[i]">
-                <app-contact-details [userId]="completedAssignments[i].updatedBy" [indexInTasks]="i" (closePopup)="closeContactDetail($event)">
+                <app-contact-details [contactId]="completedAssignments[i].updatedBy" [indexInTasks]="i" (closePopup)="closeContactDetail($event)">
                   
                 </app-contact-details>
               </div>
@@ -40,7 +40,7 @@
         </div>
       </div>
     </ng-container>
-    <ng-container *ngIf="completedAssignments.length == 0">
+    <ng-container *ngIf="completedAssignments && completedAssignments.length == 0">
       No completed tasks!
     </ng-container>
   </div>

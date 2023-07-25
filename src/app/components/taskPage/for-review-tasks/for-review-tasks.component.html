@@ -25,7 +25,7 @@
               <img src="../../../../assets/img/owner.png" alt="">
               <button (click)="(showContactDetail(i))">Owner</button>
               <div *ngIf="showContactDetailsMap[i]">
-                <app-contact-details [userId]="forReviewAssignments[i].beingDoneById" [indexInTasks]="i" (closePopup)="closeContactDetail($event)">
+                <app-contact-details [contactId]="forReviewAssignments[i].beingDoneById" [indexInTasks]="i" (closePopup)="closeContactDetail($event)">
                   
                 </app-contact-details>
               </div>
@@ -52,7 +52,7 @@
         </div>
       </div>
     </ng-container>
-    <ng-container *ngIf="forReviewAssignments.length == 0">
+    <ng-container *ngIf="forReviewAssignments && forReviewAssignments.length == 0">
       No task waiting for review!
     </ng-container>
   </div>

@@ -20,7 +20,6 @@ export class NewAssignmentService {
       descriptionURL,
       designURL
     };
-    console.log(body)
     return this.http.post(`https://kanbanprojectapi.azurewebsites.net/api/Assignments?projectId=${projectId}&creatorId=${userId}`, body)
   }
 }
