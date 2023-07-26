@@ -2,6 +2,8 @@
   <div class="project-title-and-new-assignment">
     <button class="button" (click)="openNewAssignmentPopup()">Add assignment</button>
     <button class="button" (click)="addUserToProject()">Add User to Project</button>
+    <label for="addUser">Enter user email:</label>
+    <input type="text" name="" id="addUser">
     <app-new-assignment-form *ngIf="newAssignmentPopup" [projectId]="projectId" 
                                       (reloadAssignmentsAndClosePopup)="closeNewAssignmentPopup()" 
                                       (closePopup)="closeNewAssignmentPopup()">
