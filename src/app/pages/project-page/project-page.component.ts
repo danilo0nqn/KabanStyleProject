@@ -3,6 +3,8 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Assignment } from 'src/app/models/assignment';
 import { Project } from 'src/app/models/project';
 import { GetAssignmentsByProjectService } from 'src/app/services/get-assignments-by-project.service';
+import { FormGroup, FormBuilder, Validators} from '@angular/forms'
+import { AddUserToProjectService } from 'src/app/services/add-user-to-project.service';
 
 @Component({
   selector: 'app-project-page',
@@ -22,8 +24,16 @@ export class ProjectPageComponent implements OnInit{
   userProject?: Project;
   storedProjects?: string | null;
   newAssignmentPopup: boolean = false;
+  addUserToProject: boolean = false;
+  addUserToProjectForm!: FormGroup;
+  showAddNewUserMessages: { [key: number]: boolean } = {};
 
-  constructor( private route: ActivatedRoute, private assignmentsByProjectService : GetAssignmentsByProjectService ){
+  constructor(
+      private route: ActivatedRoute,
+      private assignmentsByProjectService : GetAssignmentsByProjectService,
+      private formBuilder: FormBuilder,
+      private addUserToProjectService: AddUserToProjectService
+      ){
     this.route.queryParams.subscribe((params: any) =>
     {
       console.log('QueryParams: ', params.id);
@@ -38,6 +48,9 @@ export class ProjectPageComponent implements OnInit{
       this.userProjects = JSON.parse(this.storedProjects)
     }
     this.userProject = this.userProjects.find((p => p.id = this.projectId))
+    this.addUserToProjectForm = this.formBuilder.group({
+      email: ['', Validators.compose([Validators.required, Validators.email])]
+    })
   }
 
   reloadAssignments(): void {
@@ -71,7 +84,32 @@ export class ProjectPageComponent implements OnInit{
   deleteProject(){
 
   }
-  addUserToProject(){
-    
+  addUserToProjectPopup(){
+    this.addUserToProject=true
   }
+  closeAddUserToProjectPopup(){
+    this.addUserToProject = false
+  }
+
+  get email (){
+    return this.addUserToProjectForm.get('email')
+  }
+
+  sendNewUserToProject(email: string){
+    this.showAddNewUserMessages[0] = true
+    this.showAddNewUserMessages[1] = false
+    this.showAddNewUserMessages[2] = false
+    this.addUserToProjectService.addUserToProject(email, this.projectId).subscribe(
+      (response)=>{
+        this.showAddNewUserMessages[0] = false
+        this.showAddNewUserMessages[1] = true
+      },
+      (error)=>{
+        this.showAddNewUserMessages[0] = false
+        this.showAddNewUserMessages[2] = true
+      },
+      ()=>{}
+    )
+  }
+  
 }

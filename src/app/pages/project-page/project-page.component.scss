@@ -35,6 +35,58 @@
       color: #231e39;
       transition: 0.5s;
     }
+
+    .add-new-assignment{
+      position: absolute;
+      z-index: 1;
+      top: 105px;
+      bottom: 0;
+      left: 340px;
+      right: 0;
+      display: flex;
+      height: 82px;
+      background-color: #454545;
+      width: 275px;
+      align-items: center;
+      border: 1px solid #03bfbc;
+      box-shadow: 3px 4px 8px black;
+      border-radius: 6px;
+      padding: 0 5px 0 5px;
+      gap: 5px;
+
+      input{
+        background-color: transparent;
+        color: #03bfbc;
+        margin-bottom: 5px;
+        width: 100%;
+        font-size: 18px;
+      }
+      input::placeholder{
+        color :#03bfbc;
+      }
+      .input-messages{
+        color: #03bfbc;
+        text-shadow: 1px 1px 2px black, 0 0 1em red, 0 0 0.2em red;
+      }
+      .add-new-assignment-buttons{
+        display: flex;
+        flex-direction: column;
+        margin-left: auto;
+        
+        button{
+          background-color: transparent;
+        }
+        .material-icons{
+          color: #03bfbc;
+        }
+        button:disabled{
+          .material-icons{
+            color: #17706f;
+          }
+        }
+        
+      }
+    }
     
 
     .project-title{
