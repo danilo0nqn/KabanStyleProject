@@ -98,7 +98,3 @@ export class HomePageComponent implements OnInit {
     this.editProfile = false
   }
 }
-
-
-/* AGREGAR METODO DELETE PROJECT */
-/* AGREGAR METODO ADD USER TO PROJECT */
