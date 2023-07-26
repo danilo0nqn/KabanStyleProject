@@ -45,6 +45,9 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.storedId = sessionStorage.getItem('userId');
+    this.storedData = sessionStorage.getItem('userInfo');
+    this.storedAssignments = sessionStorage.getItem('userAssignments');
     if (this.storedId != null) {
       this.userId = parseInt(this.storedId, 10);
     }
@@ -69,6 +72,7 @@ export class HomePageComponent implements OnInit {
     if(this.userInfo.status.length == 0){
       this.userInfo.status = "Insert your status message here!"
     }
+    
   }
 
   changePersonalStatus() {

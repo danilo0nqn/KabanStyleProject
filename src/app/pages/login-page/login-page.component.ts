@@ -44,7 +44,9 @@ export class LoginPageComponent implements OnInit {
         this.profileLoader.loadUserInfo(this.userId)
         this.profileLoader.loadProjectsAssignments(this.userId);
         this.loading = false;
-        this.router.navigate(['home']);
+        setTimeout(() => {
+          this.router.navigate(['home']);
+        }, 1000);
       },
       (error) => {
         this.loading = false;
