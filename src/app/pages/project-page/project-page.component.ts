@@ -5,6 +5,8 @@ import { Project } from 'src/app/models/project';
 import { GetAssignmentsByProjectService } from 'src/app/services/get-assignments-by-project.service';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms'
 import { AddUserToProjectService } from 'src/app/services/add-user-to-project.service';
+import { DeleteProjectService } from 'src/app/services/delete-project.service';
+import { ProfileLoaderService } from 'src/app/services/profile-loader.service';
 
 @Component({
   selector: 'app-project-page',
@@ -15,6 +17,7 @@ import { AddUserToProjectService } from 'src/app/services/add-user-to-project.se
 export class ProjectPageComponent implements OnInit{
 
   projectId!: number;
+  userId!: number
   assignments!: Assignment[];
   pendingAssignments!: Assignment[];
   ongoingAssignments!: Assignment[];
@@ -27,12 +30,16 @@ export class ProjectPageComponent implements OnInit{
   addUserToProject: boolean = false;
   addUserToProjectForm!: FormGroup;
   showAddNewUserMessages: { [key: number]: boolean } = {};
+  showDeleteProjectWarning: boolean = false;
 
   constructor(
       private route: ActivatedRoute,
+      private router: Router,
       private assignmentsByProjectService : GetAssignmentsByProjectService,
       private formBuilder: FormBuilder,
-      private addUserToProjectService: AddUserToProjectService
+      private addUserToProjectService: AddUserToProjectService,
+      private deleteProjectService: DeleteProjectService,
+      private profileLoaderService: ProfileLoaderService
       ){
     this.route.queryParams.subscribe((params: any) =>
     {
@@ -51,6 +58,10 @@ export class ProjectPageComponent implements OnInit{
     this.addUserToProjectForm = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.email])]
     })
+    let storedId = sessionStorage.getItem('userId')
+    if (storedId) {
+      this.userId = parseInt(storedId, 10)
+    }
   }
 
   reloadAssignments(): void {
@@ -81,8 +92,22 @@ export class ProjectPageComponent implements OnInit{
     this.changeInAssignments();
     this.newAssignmentPopup = false;
   }
+  showDeleteProjectWarningPopup(){
+    this.showDeleteProjectWarning = !this.showDeleteProjectWarning
+  }
   deleteProject(){
-
+    this.deleteProjectService.deleteProject(this.projectId).subscribe(
+      (response)=>{
+      },
+      (error)=>{},
+      ()=>{
+        this.profileLoaderService.loadUserInfo(this.userId)
+        this.profileLoaderService.loadProjectsAssignments(this.userId)
+        setTimeout(() => {
+          this.router.navigate(['home']);
+        }, 1000);
+      }
+    )
   }
   addUserToProjectPopup(){
     this.addUserToProject=true

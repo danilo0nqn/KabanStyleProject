@@ -12,6 +12,7 @@ export class NewAssignmentService {
   newAssignment(data: any): Observable<any>{  
     let {userId, projectId, name, description, priority, descriptionURL, designURL, stage} = data;
 
+    priority = parseInt(priority, 10)
     let body = {
       name,
       description,
@@ -20,6 +21,7 @@ export class NewAssignmentService {
       descriptionURL,
       designURL
     };
+    console.log(body)
     return this.http.post(`https://kanbanprojectapi.azurewebsites.net/api/Assignments?projectId=${projectId}&creatorId=${userId}`, body)
   }
 }

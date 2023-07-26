@@ -24,6 +24,9 @@
         </div>
       </div>
     </div>
+    <div *ngIf="showAddNewProjectMessages[0]" class="input-messages">Creando...</div>
+    <div *ngIf="showAddNewProjectMessages[1]" class="input-messages">Proyecto añadido!</div>
+    <div *ngIf="showAddNewProjectMessages[2]" class="input-messages">El proyecto no pudo ser añadido</div>
     <h4 class="error-found"> {{errorInNewProject}} </h4>
     <div >
       <button type="submit" [disabled]="!newProjectForm.valid" class="submit_button">Create new project!</button>

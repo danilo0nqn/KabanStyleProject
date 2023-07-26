@@ -12,32 +12,40 @@ import { ProfileLoaderService } from 'src/app/services/profile-loader.service';
 export class NewProjectComponent implements OnInit{
 
   storedId! : string | null
-  id!: number;
+  userId!: number;
   createdProjectId!: number;
-
   errorNewProject: string = '';
+  showAddNewProjectMessages: { [key: number]: boolean } = {};
 
   constructor(private newProjectService: NewProjectService, private router: Router, private profileLoader : ProfileLoaderService){}
 
   ngOnInit(): void {
     this.storedId = sessionStorage.getItem('userId');
-    this.id = 0;
     if (this.storedId != null) {
-      this.id = parseInt(this.storedId, 10);
+      this.userId = parseInt(this.storedId, 10);
     }
   }
 
   newProject(value: any){
-    this.newProjectService.newProject(value).subscribe(
+    let data = value
+    data.createdBy = this.userId
+    this.showAddNewProjectMessages[0] = true
+    this.showAddNewProjectMessages[1] = false
+    this.showAddNewProjectMessages[2] = false
+    this.newProjectService.newProject(data, this.userId).subscribe(
       (response) => {
         console.log("Projecto creado correctamente!")
+        this.showAddNewProjectMessages[0] = false
+        this.showAddNewProjectMessages[1] = true
       },
       (error) => {
         console.error(`Ha habido un error al intentar crear el projecto ${error}`);
+        this.showAddNewProjectMessages[0] = false
+        this.showAddNewProjectMessages[2] = true
       },
       () => {
         console.info('proceso de creacion de projecto ha finalizado');
-        this.profileLoader.loadProjectsAssignments(this.id)
+        this.profileLoader.loadProjectsAssignments(this.userId)
         this.router.navigate(['home']);
         /* TODO: Idealmente, deberia ir al projecto, peor no se como devolver el id correcto dle projecto nuevo para pasarlo por queryparamas con navigate */
         /* let navigationExtras: NavigationExtras = {

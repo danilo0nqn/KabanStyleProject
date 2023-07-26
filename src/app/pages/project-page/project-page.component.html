@@ -1,17 +1,26 @@
 <div class="project-page">
   <div class="project-title-and-new-assignment">
-    <button class="button" (click)="openNewAssignmentPopup()">Add assignment</button>
-    <button class="button" (click)="addUserToProjectPopup()">Add User to Project</button>
 
+    <!-- Add New Assignment -->
+
+    <button class="button" (click)="openNewAssignmentPopup()">Add assignment</button>
+    <app-new-assignment-form *ngIf="newAssignmentPopup" [projectId]="projectId" 
+    (reloadAssignmentsAndClosePopup)="closeNewAssignmentPopup()" 
+    (closePopup)="closeNewAssignmentPopup()">
+    </app-new-assignment-form>
+
+    <!-- Add User To Project -->
+
+    <button class="button" (click)="addUserToProjectPopup()">Add User to Project</button>
     <form [formGroup]="addUserToProjectForm" (submit)="sendNewUserToProject(addNewUser.value)" class="add-new-assignment" *ngIf="addUserToProject">
       <div class="add-new-assignment-input">
         <input type="email" name="" id="addUser" #addNewUser formControlName="email" placeholder="Enter user email:">
         <div *ngIf="email?.errors?.['email']" class="input-messages">
-          El formato del email es incorrecto
+          Email format is not valid
         </div>
-        <div *ngIf="showAddNewUserMessages[0]" class="input-messages">Enviando...</div>
-        <div *ngIf="showAddNewUserMessages[1]" class="input-messages">Usuario añadido!</div>
-        <div *ngIf="showAddNewUserMessages[2]" class="input-messages">Ese usuario no esta registrado</div>
+        <div *ngIf="showAddNewUserMessages[0]" class="input-messages">Sending...</div>
+        <div *ngIf="showAddNewUserMessages[1]" class="input-messages">User Added!</div>
+        <div *ngIf="showAddNewUserMessages[2]" class="input-messages">User doesn't exist</div>
       </div>
       <div class="add-new-assignment-buttons">
         <button type="submit" [disabled]="!addUserToProjectForm.valid"><span class="material-icons">send</span></button>
@@ -19,15 +28,26 @@
       </div>
     </form>
 
-    <app-new-assignment-form *ngIf="newAssignmentPopup" [projectId]="projectId" 
-                                      (reloadAssignmentsAndClosePopup)="closeNewAssignmentPopup()" 
-                                      (closePopup)="closeNewAssignmentPopup()">
-    </app-new-assignment-form>
     <div class="project-title">
       {{userProject?.name}}
     </div>
-    <button class="button" (click)="deleteProject()">Delete Project</button>
+
+    <!-- Delete project button -->
+
+    <button class="button" (click)="showDeleteProjectWarningPopup()">Delete Project</button>
+    <div class="delete-project-warning" *ngIf="showDeleteProjectWarning">
+      <div class="delete-project-warning-popup">
+        <div class="delete-project-warning-message">Are you sure you want to delete the project?</div>
+        <div class="delete-project-warning-buttons">
+          <button (click)="deleteProject()">Delete</button>
+          <button (click)="showDeleteProjectWarningPopup()">Cancel</button>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <!-- Kanban boards -->
+
   <div class="project-tasks">
     <div class="pending-tasks">
       <app-pending-tasks [pendingAssignments]="pendingAssignments" (reloadAssignments)="changeInAssignments()"></app-pending-tasks>

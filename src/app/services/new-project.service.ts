@@ -12,13 +12,8 @@ export class NewProjectService {
 
   constructor(private http: HttpClient) { }
 
-  newProject(userData: any): Observable<any>{  
+  newProject(userData: any, userId: number): Observable<any>{  
     let body= userData;
-    this.storedId = sessionStorage.getItem('userId');
-    this.id = 0;
-    if (this.storedId != null) {
-      this.id = parseInt(this.storedId, 10);
-    }
-    return this.http.post(`https://kanbanprojectapi.azurewebsites.net/api/Projects?creatorId=${this.id}`, body)
+    return this.http.post(`https://kanbanprojectapi.azurewebsites.net/api/Projects?creatorId=${userId}`, body)
   }
 }

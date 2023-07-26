@@ -13,6 +13,7 @@ export class NewProjectFormComponent {
   newProjectForm!: FormGroup;
   @Input() errorInNewProject: string = ''
   @Output() newProjectAction: EventEmitter<{}> = new EventEmitter<{}>();
+  @Input() showAddNewProjectMessages: { [key: number]: boolean } = {};
   userInfo!: User;
   storedData: string | null;
 

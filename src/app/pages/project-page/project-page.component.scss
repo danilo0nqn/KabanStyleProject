@@ -101,6 +101,61 @@
       border: 1px solid #454545;
       box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.05);
     }
+
+    .delete-project-warning{
+      width: 100%;
+      min-height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1;
+      position: fixed;
+      top: 64px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      .delete-project-warning-popup{
+        border: 2px solid #03bfbc;
+        border-radius: 6px;
+        box-shadow: 2px 20px 20px black;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        background-color: #454545;
+        width: fit-content;
+        height: 90px;
+        padding: 10px 20px 10px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        color: #03bfbc;
+        .delete-project-warning-buttons{
+          display: flex;
+          width: 100%;
+          justify-content: space-around;
+          button {
+            display: block;
+            background-color: #454545;
+            color: #03bfbc;
+            border: 1px solid #03bfbc;
+            border-radius: 3px;
+            cursor: pointer;
+            padding: 10px 25px;
+          }
+        
+          button:hover {
+            background-color: #03bfbc;
+            color: #231e39;
+            transition: 0.5s;
+          }
+        }
+      }
+    }
   }
 
   .project-tasks{
