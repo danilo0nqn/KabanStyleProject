@@ -22,6 +22,7 @@ export class ProfileLoaderService {
       (responseProfile) => {
         sessionStorage.removeItem('userInfo')
         this.userInfo = responseProfile;
+        delete this.userInfo.password;
         console.log("user info cargados al session storage")
       },
       (error) =>{

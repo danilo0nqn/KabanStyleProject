@@ -84,12 +84,12 @@
       <div class="contact-details-socialMedia">
         <!-- LINKEDIN -->
         <div class="contact-details-linkedin">
-          <a [href]="contactInfo.linkedIn"><img src="../../../assets/img/Linkedin.svg" ></a>
+          <a [href]="contactInfo.linkedInURL"><img src="../../../assets/img/Linkedin.svg" ></a>
           <input placeholder="linkedIn" formControlName="linkedIn" class="contact-details-linkedin-input" *ngIf="isEditable">
         </div>
         <!-- GITHUB -->
         <div class="contact-details-github">
-          <a [href]="contactInfo.gitHub"><img src="../../../assets/img/GitHub.svg"></a>
+          <a [href]="contactInfo.gitHubURL"><img src="../../../assets/img/GitHub.svg"></a>
           <input placeholder="github" formControlName="gitHub" class="contact-details-github-input" *ngIf="isEditable">
         </div>
       </div>

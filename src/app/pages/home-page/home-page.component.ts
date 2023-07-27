@@ -101,4 +101,7 @@ export class HomePageComponent implements OnInit {
   closeEditProfilePopup(i: number){
     this.editProfile = false
   }
+  consoleLink(){
+    console.log(this.userInfo)
+  }
 }

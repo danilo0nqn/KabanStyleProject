@@ -27,32 +27,52 @@ export class ContactDetailsComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.profileLoaderService.getUserInfo(this.contactId).subscribe(
-      (response)=> {this.contactInfo = response},
-      (error) => { console.error(`No se pudo cargar la info del usuario ${error}`)},
-      ()=>{
-        console.info('Proceso de carga de usuario finalizada');
-        this.contactInfoForm = this.formBuilder.group({
-          name: [this.contactInfo.name, Validators.required],
-          lastName: [this.contactInfo.lastName, Validators.required],
-          password: [this.contactInfo.password, Validators.required],
-          status: [this.contactInfo.status, Validators.required],
-          linkedIn: this.contactInfo.linkedIn,
-          gitHub: this.contactInfo.gitHub,
-          avatar: this.contactInfo.avatar,
-        });
-      }
-    )
-    this.profileLoaderService.getProjects(this.contactId).subscribe(
-      (responseProjects)=>{this.contactProjects = responseProjects}
-    )
     let storedId = sessionStorage.getItem('userId');
     if (storedId){
       this.userId = parseInt(storedId, 10)
     }
     if (this.userId == this.contactId){
-      this.sameUser = true
+      this.sameUser = true;
+      this.profileLoaderService.getUserInfo(this.contactId).subscribe(
+        (response)=> {this.contactInfo = response},
+        (error) => { console.error(`No se pudo cargar la info del usuario ${error}`)},
+        ()=>{
+          console.info('Proceso de carga de usuario finalizada');
+          this.contactInfoForm = this.formBuilder.group({
+            name: [this.contactInfo.name, Validators.required],
+            lastName: [this.contactInfo.lastName, Validators.required],
+            password: [this.contactInfo.password, Validators.required],
+            status: [this.contactInfo.status, Validators.required],
+            linkedInURL: this.contactInfo.linkedInURL,
+            gitHubURL: this.contactInfo.gitHubURL,
+            avatar: this.contactInfo.avatar,
+          });
+        }
+      )
+    }else{
+      this.profileLoaderService.getUserInfo(this.contactId).subscribe(
+        (response)=> {
+          this.contactInfo = response;
+          this.contactInfo.password = '';
+        },
+        (error) => { console.error(`No se pudo cargar la info del usuario ${error}`)},
+        ()=>{
+          console.info('Proceso de carga de usuario finalizada');
+          this.contactInfoForm = this.formBuilder.group({
+            name: [this.contactInfo.name, Validators.required],
+            lastName: [this.contactInfo.lastName, Validators.required],
+            password: ['', Validators.required],
+            status: [this.contactInfo.status, Validators.required],
+            linkedInURL: this.contactInfo.linkedInURL,
+            gitHubURL: this.contactInfo.gitHubURL,
+            avatar: this.contactInfo.avatar,
+          });
+        }
+      )
     }
+    this.profileLoaderService.getProjects(this.contactId).subscribe(
+      (responseProjects)=>{this.contactProjects = responseProjects}
+    )
   }
 
   get name (){
@@ -68,14 +88,14 @@ export class ContactDetailsComponent implements OnInit{
     return this.contactInfoForm.get('status')
   }
   submitNewProjectForm(){
-    if (this.contactInfoForm.valid){
+    if (this.contactInfoForm.valid && this.userId == this.contactId){
       let data = this.contactInfoForm.value
       data.id = this.contactId
-      if (!data.gitHub){
-        data.gitHub = ''
+      if (!data.gitHubURL){
+        data.gitHubURL = ''
       }
-      if (!data.linkedIn){
-        data.linkedIn = ''
+      if (!data.linkedInURL){
+        data.linkedInURL = ''
       }
       this.editProfileService.editUserProfile(data).subscribe(
         (response)=>{this.profileLoaderService.loadUserInfo(this.userId)},
