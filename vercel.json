@@ -2,5 +2,6 @@
   "rewrites": [
     { "source": "/websockets-doom.js", "destination": "/assets/doom-game/websockets-doom.js" },
     { "source": "/(.*)", "destination": "/assets/doom-game/index.html" }
-  ]
+  ],
+  "fallback": { "destination": "/404.html" }
 }
