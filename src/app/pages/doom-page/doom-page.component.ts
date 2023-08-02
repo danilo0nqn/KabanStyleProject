@@ -11,8 +11,6 @@ export class DoomPageComponent implements OnInit{
   ngOnInit(): void {
     setTimeout(() => {
       this.doomFilesReady = true
-    }, 3000)
-
-
+    }, 1500)
   }
 }
