@@ -1,5 +1,5 @@
 <div class="doom-game-container">
-  <div *ngIf="doomFilesReady;else doomCargado">
+  <div *ngIf="!doomFilesReady;else doomCargado">
     <mat-spinner></mat-spinner>
   </div>
   <ng-template #doomCargado>
