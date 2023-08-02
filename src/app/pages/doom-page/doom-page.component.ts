@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {*} from 'src/assets/doom-game'
 
 @Component({
   selector: 'app-doom-page',
@@ -15,4 +14,5 @@ export class DoomPageComponent implements OnInit{
     }, 3000)
 
 
+  }
 }
