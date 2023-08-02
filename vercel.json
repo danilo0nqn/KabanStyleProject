@@ -1,5 +1,0 @@
-{
-  "rewrites": [
-    { "source": "/websockets-doom.js", "destination": "/assets/doom-game/websockets-doom.js" }
-  ]
-}
