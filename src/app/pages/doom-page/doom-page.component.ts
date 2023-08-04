@@ -12,7 +12,7 @@ export class DoomPageComponent implements OnInit{
   ngOnInit(): void {
     setTimeout(() => {
       this.doomFilesReady = true
-    }, 0)
+    }, 1500)
   }
 
   onJoystickKeyPress(keyPressed: any){

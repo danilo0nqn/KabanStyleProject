@@ -1,9 +1,8 @@
 
 <div class="doom-game-container">
-  <div *ngIf="false;else doomCargado" class="spinner">
+  <div *ngIf="!doomFilesReady;else doomCargado" class="spinner">
     <mat-spinner></mat-spinner>
     Loading game resources...
-    <app-joystick class="joystick" (simulateKeyPress)="onJoystickKeyPress($event)"></app-joystick>
   </div>
   
   <ng-template #doomCargado>
