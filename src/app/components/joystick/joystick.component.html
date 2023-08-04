@@ -1,0 +1,9 @@
+<div class="joystick" #joystick>
+  <div class="stick" 
+      [style.transform]="getStickTransform()" 
+      (touchstart)="onTouchStart($event)" 
+      (touchmove)="onTouchMove($event)" 
+      (touchend)="onTouchEnd()">
+  </div>
+</div>
+<div #textField></div>

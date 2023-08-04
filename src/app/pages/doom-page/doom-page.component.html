@@ -1,8 +1,19 @@
+
 <div class="doom-game-container">
-  <div *ngIf="!doomFilesReady;else doomCargado">
+  <div *ngIf="false;else doomCargado" class="spinner">
     <mat-spinner></mat-spinner>
+    Loading game resources...
+    <app-joystick class="joystick" (simulateKeyPress)="onJoystickKeyPress($event)"></app-joystick>
   </div>
+  
   <ng-template #doomCargado>
-    <iframe src="../../../assets/doom-game/websockets-doom.html" class="doom-game"></iframe>
+    <div class="game">
+      <iframe #doomIframe src="../../../assets/doom-game/index-doom.html" class="doom-game"></iframe>
+      <div class="gamepad">
+        <app-joystick class="joystick" (simulateKeyPressOutput)="onJoystickKeyPress($event)"></app-joystick>
+        <app-joystick class="joystick" (simulateKeyPressOutput)="onJoystickKeyPress($event)"></app-joystick>
+      </div>
+      <button (click)="buttonClicked()">button</button>
+    </div>
   </ng-template>
 </div>

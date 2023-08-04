@@ -1,0 +1,19 @@
+.joystick {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  background-color: rgb(31, 31, 31);
+  overflow: visible;
+  border-radius: 50%;
+  .stick {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(#6e6e6e, #3a3a3a);
+    border-radius: 50%;
+    left: 25px;
+    top: 25px;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s;
+  }
+}

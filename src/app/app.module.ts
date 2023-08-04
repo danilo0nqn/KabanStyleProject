@@ -37,6 +37,7 @@ import { NewProjectComponent } from './pages/new-project/new-project.component';
 import { NewProjectFormComponent } from './components/new-project-form/new-project-form.component';
 import { ContactDetailsThroughPopupComponent } from './components/contact-details-through-popup/contact-details-through-popup.component';
 import { NewAssignmentFormComponent } from './components/new-assignment-form/new-assignment-form.component';
+import { JoystickComponent } from './components/joystick/joystick.component';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { NewAssignmentFormComponent } from './components/new-assignment-form/new
     NewProjectComponent,
     NewProjectFormComponent,
     ContactDetailsThroughPopupComponent,
-    NewAssignmentFormComponent
+    NewAssignmentFormComponent,
+    JoystickComponent
   ],
   imports: [
     BrowserModule,
