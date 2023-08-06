@@ -46,7 +46,7 @@ export class LoginPageComponent implements OnInit {
         this.loading = false;
         setTimeout(() => {
           this.router.navigate(['home']);
-        }, 1000);
+        }, 1500);
       },
       (error) => {
         this.loading = false;

@@ -24,7 +24,7 @@
             <div class="task-details-owner">
               <img src="../../../../assets/img/owner.png" alt="">
               <!-- <a [href]="pendingAssignments[i].projectId">{{pendingAssignments[i].createdBy}}</a> -->
-              <button [disabled]="!ownerOpen" class="task-details-owner-button" (click)="openPopup(pendingAssignments[i].beingDoneById, i)" >Owner</button>
+              <button [disabled]="!ownerOpen" class="task-details-owner-button" (click)="openPopup(pendingAssignments[i].createdBy, i)" >Owner</button>
               <div numero=i  #popupContainer></div>
             </div>
           </div>

@@ -15,7 +15,7 @@ export class ContactPopupService {
 
   openPopup(container: ViewContainerRef, id:number) {
     this.contactDetailsComponent = container.createComponent(ContactDetailsThroughPopupComponent);
-    this.contactDetailsComponent.instance.userId = id;
+    this.contactDetailsComponent.instance.contactId = id;
     this.contactDetailsComponent.instance.ownerOpen = false;
     this.setOpenButtonShowStatus(false)
     this.contactDetailsComponent.instance.closePopup.subscribe(() => {

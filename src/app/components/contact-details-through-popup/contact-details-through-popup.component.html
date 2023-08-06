@@ -1,6 +1,99 @@
+<div class="contact-details">
+  <div class="contact-details-content">
+    <form [formGroup]="contactInfoForm" form (submit)="submitNewProjectForm()" class="contact-details-form" *ngIf="contactInfo">
+      
+      <!-- BOTTON EDITAR O GUARDAR PERFIL -->
+      <div class="contact-details-form-button">
+        <button (click)="closeAssignmentPopup()" class="back-button"><span class="material-icons">
+          arrow_back
+          </span>
+        </button>
+        <button (click)="changeIsEditable()" *ngIf="!isEditable && sameUser">EDITAR</button>
+        <button type="submit" [disabled]="!contactInfoForm.valid" class="submit_button" *ngIf="isEditable && sameUser">GUARDAR</button>
+      </div>
 
-<div class="contact-details-content">
-  <p>contact details popup works!</p>
+      <div class="contact-details-avatar-name-email">
+        <!-- INPUT AVATAR -->
+        <div class="contact-details-avatar-form">
+          <input placeholder="Profile Picture link" formControlName="avatar" class="contact-details-avatar-input" *ngIf="isEditable">
+          <div class="contact-details-avatar-container" [ngStyle]="{'margin-top': !isEditable ? '26px' : '5px'}">
+            <div class="contact-details-avatar">
+              <img class="contact-details-avatar-img" src="../../../assets/img/asd.png" alt="" >
+            </div>
+          </div>
+        </div>
 
-  <button (click)="closeAssignmentPopup()">Close</button>
+        <div class="contact-details-name-email-projects">
+          <div class="contact-details-fullName">
+            <!-- INPUT NOMBRE -->
+            <div class="contact-details-fullName-name">
+              <div class="contact-details-fullName-name-label" *ngIf="isEditable">Nombre: </div>
+              <input placeholder="Name" formControlName="name" class="contact-details-fullName-name-input" *ngIf="isEditable">
+              <div *ngIf="!isEditable" class="contact-details-fullName-name-value">{{contactInfo.name}}</div>
+              <div *ngIf="name?.errors?.['required'] && name?.touched" class="required_label">
+                El campo del name es obligatorio
+              </div>
+            </div>
+
+            <!-- INPUT APELLIDO -->
+            <div class="contact-details-fullName-lastName">
+              <div class="contact-details-fullName-lastName-label" *ngIf="isEditable">Apellido: </div>
+              <input placeholder="Last name" formControlName="lastName" class="contact-details-fullName-lastName-input" *ngIf="isEditable">
+              <div *ngIf="!isEditable" class="contact-details-fullName-lastName-value">{{contactInfo.lastName}}</div>
+              <div *ngIf="lastName?.errors?.['required'] && lastName?.touched" class="required_label">
+                El campo del lastName es obligatorio
+              </div>
+            </div>
+          </div>
+
+          <!-- INPUT PASSWORD; SOLO VISIBLE SI ES CONTACTO EDITABLE -->
+          <div class="contact-details-password" *ngIf="isEditable">
+            <div class="contact-details-password-label" *ngIf="isEditable">Password </div>
+            <input placeholder="password" type="password" formControlName="password" class="contact-details-password-input" *ngIf="isEditable">
+            <div *ngIf="password?.errors?.['required'] && password?.touched" class="required_label" >
+              El campo del password es obligatorio
+            </div>
+          </div>
+
+          <!-- EMAIL -->
+          <div class="contact-details-email">
+            {{contactInfo.email}}
+          </div>
+
+          <div class="contact-details-projects" *ngIf="contactProjects">
+            currently working on {{contactProjects.length}} projects!
+          </div>
+        </div>
+      </div>
+
+      <!-- DIVISOR -->
+      <div>
+        <hr class="divisor">
+      </div>
+
+      <!--INPUT MENSAJE PERSONAL -->
+      <div class="contact-details-status">
+        <input placeholder="status*" formControlName="status" class="contact-details-status-input" *ngIf="isEditable">
+        <div *ngIf="!isEditable" class="contact-details-status-message"> {{contactInfo.status}} </div>
+        <div *ngIf="status?.errors?.['required'] && status?.touched" class="required_label">
+          El campo del status es obligatorio
+        </div>
+      </div>
+
+      <!-- INPUT REDES SOCIALES -->
+      <div class="contact-details-socialMedia">
+        <!-- LINKEDIN -->
+        <div class="contact-details-linkedin">
+          <a [href]="contactInfo.linkedInURL"><img src="../../../assets/img/Linkedin.svg" ></a>
+          <input placeholder="linkedIn" formControlName="linkedIn" class="contact-details-linkedin-input" *ngIf="isEditable">
+        </div>
+        <!-- GITHUB -->
+        <div class="contact-details-github">
+          <a [href]="contactInfo.gitHubURL"><img src="../../../assets/img/GitHub.svg"></a>
+          <input placeholder="github" formControlName="gitHub" class="contact-details-github-input" *ngIf="isEditable">
+        </div>
+      </div>
+      
+    </form>
+  </div>
 </div>

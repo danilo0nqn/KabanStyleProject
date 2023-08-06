@@ -33,9 +33,7 @@ export class JoystickComponent {
         this.simulateKeyPress('s')
       } 
       if (this.stickPosition.y < -20) {
-        console.log('W');
         this.simulateKeyPress('w')
-        console.log(joystickRect.width + ' - ' + joystickRect.height)
       }
       if (this.stickPosition.x < -20){
         console.log('A')

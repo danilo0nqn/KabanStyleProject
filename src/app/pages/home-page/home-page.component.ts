@@ -63,8 +63,7 @@ export class HomePageComponent implements OnInit {
         'You have ' + this.assignments.length + ' tasks to do (' + this.assignments.filter((urgent) => urgent.priority === 4).length + ' urgents!)';
       }
     }
-    if (this.userInfo.avatar == null || this.userInfo.avatar == '') {
-      this.imagenURL = this.userInfo.avatar;
+    if (this.userInfo.avatar == undefined || this.userInfo.avatar == '' || this.userInfo.avatar == null) {
       this.imagenURL = '../../../assets/img/asd.png';
     } else {
       this.imagenURL = this.userInfo.avatar;
@@ -88,7 +87,7 @@ export class HomePageComponent implements OnInit {
     this.statusChanger.getAssignmentsByUser(this.userPersonalStatus, this.userId).subscribe(
       (response)=> (response),
       (error) => (error),
-      ()=> console.log("mensaje de edicion termiando")
+      ()=> console.info("mensaje de edicion termiando")
     )
     this.canChangePersonalStatus = !this.canChangePersonalStatus;
     this.loading = !this.loading;
@@ -100,8 +99,5 @@ export class HomePageComponent implements OnInit {
 
   closeEditProfilePopup(i: number){
     this.editProfile = false
-  }
-  consoleLink(){
-    console.log(this.userInfo)
   }
 }
