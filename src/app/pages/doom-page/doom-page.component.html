@@ -7,7 +7,7 @@
   
   <ng-template #doomCargado>
     <div class="game">
-      <iframe #doomIframe src="../../../assets/doom-game/index-doom.html" class="doom-game"></iframe>
+      <iframe #doomIframe src="/src/assets/doom-game/index-doom.html" class="doom-game"></iframe>
       <div class="gamepad" *ngIf="mobileQuery.matches">
         <app-joystick class="joystick" (simulateKeyPressOutput)="onJoystickKeyPress($event)"></app-joystick>
         <app-joystick class="joystick" (simulateKeyPressOutput)="onJoystickKeyPress($event)"></app-joystick>
